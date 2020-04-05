@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using KoronaZakupy.Entities;
+
 
 namespace KoronaZakupy.Services {
     public class UsersDbContext : IdentityDbContext{
