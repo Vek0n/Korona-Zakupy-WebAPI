@@ -1,18 +1,16 @@
 ﻿<Properties StartupConfiguration="{1A03ED93-1CF9-437C-A1FA-5759CDF10D07}|Default">
   <MonoDevelop.Ide.ItemProperties.KoronaZakupy PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Entities/User.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Repositories/ITestRepository.cs">
     <Files>
-      <File FileName="KoronaZakupy/Controllers/UserController.cs" Line="65" Column="37" />
-      <File FileName="KoronaZakupy/Services/Interfaces/IUserRegister.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserRegister.cs" Line="1" Column="14" />
-      <File FileName="KoronaZakupy/Services/UsersDbContext.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserLogin.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserGetter.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/TokenGenerator.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/Interfaces/IUserLogin.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/Interfaces/IUserGetter.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/Interfaces/ITokenGenerator.cs" Line="2" Column="37" />
-      <File FileName="KoronaZakupy/Entities/User.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Controllers/UserController.cs" Line="15" Column="16" />
+      <File FileName="KoronaZakupy/Services/UsersDbContext.cs" />
+      <File FileName="KoronaZakupy/Services/UserLogin.cs" />
+      <File FileName="KoronaZakupy/Services/UserGetter.cs" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserLogin.cs" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserGetter.cs" />
+      <File FileName="KoronaZakupy/Services/Interfaces/ITokenGenerator.cs" />
+      <File FileName="KoronaZakupy/Entities/User.cs" />
+      <File FileName="KoronaZakupy/Repositories/ITestRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,8 +18,9 @@
           <Node name="KoronaZakupy" expanded="True">
             <Node name="KoronaZakupy" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True">
-                <Node name="User.cs" selected="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="ITestRepository.cs" selected="True" />
               </Node>
               <Node name="Services" expanded="True">
                 <Node name="Interfaces" expanded="True" />
