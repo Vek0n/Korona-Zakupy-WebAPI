@@ -21,5 +21,7 @@
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Communication\" />
     <Folder Include="Communication\Interfaces\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Interfaces\" />
   </ItemGroup>
 </Project>
