@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using KoronaZakupy.Services.Interfaces;
 
 
 namespace KoronaZakupy {
@@ -53,7 +54,10 @@ namespace KoronaZakupy {
                 });
 
 
-
+            services.AddScoped<IUserRegister, UserRegister>();
+            services.AddScoped<IUserLogin, UserLogin>();
+            services.AddScoped<IUserGetter, UsersGetter>();
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
 
             services.AddRazorPages();
         }

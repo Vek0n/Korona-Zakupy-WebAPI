@@ -1,15 +1,18 @@
 ﻿<Properties StartupConfiguration="{1A03ED93-1CF9-437C-A1FA-5759CDF10D07}|Default">
   <MonoDevelop.Ide.ItemProperties.KoronaZakupy PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Services/UsersDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Entities/User.cs">
     <Files>
-      <File FileName="KoronaZakupy/Properties/launchSettings.json" Line="13" Column="35" />
-      <File FileName="KoronaZakupy/Program.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Startup.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Models/LoginModel.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Entities/User.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Models/RegisterModel.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Controllers/UserController.cs" Line="65" Column="37" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserRegister.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/UserRegister.cs" Line="1" Column="14" />
       <File FileName="KoronaZakupy/Services/UsersDbContext.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/UserLogin.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/UserGetter.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/TokenGenerator.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserLogin.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserGetter.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/ITokenGenerator.cs" Line="2" Column="37" />
+      <File FileName="KoronaZakupy/Entities/User.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,11 +20,11 @@
           <Node name="KoronaZakupy" expanded="True">
             <Node name="KoronaZakupy" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
+              <Node name="Entities" expanded="True">
+                <Node name="User.cs" selected="True" />
+              </Node>
               <Node name="Services" expanded="True">
-                <Node name="UsersDbContext.cs" selected="True" />
+                <Node name="Interfaces" expanded="True" />
               </Node>
             </Node>
           </Node>
