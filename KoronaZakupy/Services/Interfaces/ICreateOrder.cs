@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KoronaZakupy.Entities;
+using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Communication.Interfaces;
 
 

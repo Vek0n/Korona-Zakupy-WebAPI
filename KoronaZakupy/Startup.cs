@@ -12,7 +12,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using KoronaZakupy.Services.Interfaces;
-
+using KoronaZakupy.Entities.OrdersDB;
+using KoronaZakupy.Repositories;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -30,6 +31,7 @@ namespace KoronaZakupy {
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddDbContext<UsersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UsersDatabase")));
+            services.AddDbContext<OrdersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OrdersDatabase")));
 
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>();
 
@@ -53,7 +55,7 @@ namespace KoronaZakupy {
                     };
                 });
 
-
+            services.AddScoped<IOrdersRepository, OrdersRepository>();
             services.AddScoped<IUserRegister, UserRegister>();
             services.AddScoped<IUserLogin, UserLogin>();
             services.AddScoped<IUserGetter, UsersGetter>();

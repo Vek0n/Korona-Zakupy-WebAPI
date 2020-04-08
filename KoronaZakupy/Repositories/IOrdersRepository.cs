@@ -1,16 +1,25 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using KoronaZakupy.Entities;
+using KoronaZakupy.Entities.OrdersDB;
 namespace KoronaZakupy.Repositories
 {
     public interface IOrdersRepository
     {
 
+        Task CreateUserAsync(User user);
 
-        Task<bool> DoesIdExist(string id);
-        Task<Order> CreateAsync(Order order);
-        Task<Order> UpdateAsync(Order order);
-        Task<string> FindByUserId(string userId); //return -record id- with userId in it
-        
+        #region Order CRUD
+        Task CreateOrderAsync(Order order, string userId1, string userId2);
+        Task UpdateOrderAsync(Order order);
+        Task<Order> ReadOrderAsync(long id);
+        Task<IEnumerable<Order>> ReadAllOrdersAsync(long id);
+        Task DeleteOrderAsync(long id);
+        #endregion
+
+        #region Other query
+        Task<bool> DoesIdExist(long id);
+        Task<long> FindByUserId(string userId); //return -record id- with userId in it
+        #endregion
 
     }
 }
