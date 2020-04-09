@@ -18,7 +18,7 @@ namespace KoronaZakupy.Repositories
 
         #region Other query
         Task<bool> DoesIdExist(long id);
-        IEnumerable<Order> FindByUserId(string userId); //return -record id- with userId in it
+        IEnumerable<OrderWithUsers> FindByUserId(string userId); //return -record id- with userId in it
         #endregion
 
     }

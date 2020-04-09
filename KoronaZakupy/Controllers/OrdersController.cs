@@ -33,10 +33,11 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpGet("{id}")]
-        public IEnumerable<UserOrder> GetOrders(string id) {
+        public IEnumerable<OrderWithUsers> GetOrders(string id) {
 
+            var result = _orderGetter.GetOrders(id);
 
-                    
+            return result;
         }
 
 

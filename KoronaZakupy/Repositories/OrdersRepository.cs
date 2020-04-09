@@ -90,13 +90,37 @@ namespace KoronaZakupy.Repositories {
         }
 
 
-        public IEnumerable<Order> FindByUserId(string userId) //return -record id- with userId in it
+        private IEnumerable<Order> FindByUserIdRaw(string userId) //return -record id- with userId in it
         {
             var result = _ordersDb.Orders.Include(order => order.Users)
             .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId));
 
             return result.ToList();
             
+        }
+
+        public IEnumerable<OrderWithUsers> FindByUserId(string userId) //return -record id- with userId in it
+        {
+            var rawResult = FindByUserIdRaw(userId);
+
+            //var result = rawResult.Select(order => new
+            //{
+            //    OrderId = order.OrderId,
+            //    OrderDate = order.OrderDate,
+            //    IsFinished = order.IsFinished,
+            //    User = order.Users.Select(u => u.UserId).ToList()
+
+            //});
+
+            var result = rawResult.Select(order => new OrderWithUsers() { 
+                OrderId = order.OrderId,
+                OrderDate = order.OrderDate,
+                IsFinished = order.IsFinished,
+                UsersId = order.Users.Select(u => u.UserId).ToList()
+            });
+
+            return result;
+
         }
     }
 }

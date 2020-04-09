@@ -14,7 +14,7 @@ namespace KoronaZakupy.Services {
 
         }
 
-       public IEnumerable<Order> GetOrders(string userId) {
+       public IEnumerable<OrderWithUsers> GetOrders(string userId) {
 
             return _ordersRepository.FindByUserId(userId);
             

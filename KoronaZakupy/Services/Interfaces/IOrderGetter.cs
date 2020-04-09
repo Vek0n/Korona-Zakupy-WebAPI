@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace KoronaZakupy.Services.Interfaces {
     public interface IOrderGetter : IBaseOrder {
 
-        public IEnumerable<Order> GetOrders(string userId);
+        public IEnumerable<OrderWithUsers> GetOrders(string userId);
 
     }
 }
