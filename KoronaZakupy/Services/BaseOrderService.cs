@@ -12,6 +12,7 @@ namespace KoronaZakupy.Services
     {
         protected readonly IOrdersRepository _ordersRepository;
         protected readonly IUnitOfWork _unitOfWork;
+
         public BaseOrderService(IOrdersRepository ordersRepository, IUnitOfWork unitOfWork)
         {
             _ordersRepository = ordersRepository;

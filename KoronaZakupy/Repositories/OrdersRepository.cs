@@ -14,10 +14,12 @@ namespace KoronaZakupy.Repositories {
             _ordersDb = ordersDb;
         }
 
+
         public async Task CreateUserAsync(User user)
         {
            await _ordersDb.Users.AddAsync(user);
         }
+
 
         public async Task CreateOrderAsync(Order order, string userId1, string userId2)
         {
@@ -42,6 +44,7 @@ namespace KoronaZakupy.Repositories {
 
         }
 
+
         public async Task<Order> ReadOrderAsync(long id)
         {
             if (!await _ordersDb.Orders.AnyAsync(o => o.OrderId == id))
@@ -57,10 +60,13 @@ namespace KoronaZakupy.Repositories {
 
             return order;
         }
+
+
         public async Task<IEnumerable<Order>> ReadAllOrdersAsync()
         {
             return await _ordersDb.Orders.ToListAsync();
         }
+
 
         public async Task UpdateOrderAsync(Order order)
         {
@@ -82,14 +88,15 @@ namespace KoronaZakupy.Repositories {
         {
             return await _ordersDb.Orders.AnyAsync(order =>order.OrderId == id);
         }
-        public async Task<IEnumerable<Order>> FindByUserId(string userId) //return -record id- with userId in it
+
+
+        public IEnumerable<Order> FindByUserId(string userId) //return -record id- with userId in it
         {
             var result = _ordersDb.Orders.Include(order => order.Users)
             .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId));
 
-            return  result.ToList();
+            return result.ToList();
             
-              
         }
     }
 }

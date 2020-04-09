@@ -49,7 +49,6 @@ namespace KoronaZakupy.Controllers {
         public IEnumerable<IdentityUser> Get() {
 
             return _userGetter.GetUsers(_userManager);
-
         }
 
 
