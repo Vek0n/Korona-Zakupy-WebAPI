@@ -12,13 +12,13 @@ namespace KoronaZakupy.Repositories
         Task CreateOrderAsync(Order order, string userId1, string userId2);
         Task UpdateOrderAsync(Order order);
         Task<Order> ReadOrderAsync(long id);
-        Task<IEnumerable<Order>> ReadAllOrdersAsync(long id);
+        Task<IEnumerable<Order>> ReadAllOrdersAsync();
         Task DeleteOrderAsync(long id);
         #endregion
 
         #region Other query
         Task<bool> DoesIdExist(long id);
-        Task<long> FindByUserId(string userId); //return -record id- with userId in it
+        Task<IEnumerable<Order>> FindByUserId(string userId); //return -record id- with userId in it
         #endregion
 
     }

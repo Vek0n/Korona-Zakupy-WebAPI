@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KoronaZakupy.UnitOfWork
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Task CompleteAsync();
     }

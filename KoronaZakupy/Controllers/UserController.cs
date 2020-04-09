@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Repositories;
+using KoronaZakupy.Entities.OrdersDB;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -25,16 +28,14 @@ namespace KoronaZakupy.Controllers {
         private readonly IUserRegister _userRegister;
         private readonly IUserLogin _userLogin;
         private readonly IUserGetter _userGetter;
-        private readonly IOrdersRepository _repo;
-
+ 
         public UserController(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             IConfiguration configuration,
             IUserRegister userRegister,
             IUserLogin userLogin,
-            IUserGetter userGetter,
-            IOrdersRepository repo) {
+            IUserGetter userGetter) {
 
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,16 +43,6 @@ namespace KoronaZakupy.Controllers {
             _userRegister = userRegister;
             _userLogin = userLogin;
             _userGetter = userGetter;
-            _repo = repo;
-        }
-
-        [HttpGet("t")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Test()
-        {
-            var order = await _repo.ReadOrderAsync(1);
-
-            return Ok();
         }
 
         [HttpGet]

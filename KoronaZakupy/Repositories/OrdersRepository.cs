@@ -57,7 +57,7 @@ namespace KoronaZakupy.Repositories {
 
             return order;
         }
-        public async Task<IEnumerable<Order>> ReadAllOrdersAsync(long id)
+        public async Task<IEnumerable<Order>> ReadAllOrdersAsync()
         {
             return await _ordersDb.Orders.ToListAsync();
         }
@@ -65,13 +65,13 @@ namespace KoronaZakupy.Repositories {
         public async Task UpdateOrderAsync(Order order)
         {
             _ordersDb.Entry(order).State = EntityState.Modified;
-            _ordersDb.Update(order);
+             _ordersDb.Update(order);
         }
 
         public async Task DeleteOrderAsync(long id)
         {
+            // Not testing
             var order = await _ordersDb.Orders.FindAsync(id);
-            // var userOrder = await _ordersDb.UsersOrders.FirstOrDefaultAsync(uo => uo.OrderId == id);
             var userOrder = (await _ordersDb.Orders.FindAsync(id)).Users.FirstOrDefault(uo => uo.OrderId == id);
 
             _ordersDb.Orders.Remove(order);
@@ -82,9 +82,14 @@ namespace KoronaZakupy.Repositories {
         {
             return await _ordersDb.Orders.AnyAsync(order =>order.OrderId == id);
         }
-        public async Task<long> FindByUserId(string userId) //return -record id- with userId in it
+        public async Task<IEnumerable<Order>> FindByUserId(string userId) //return -record id- with userId in it
         {
-            return 22;
+            var result = _ordersDb.Orders.Include(order => order.Users)
+            .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId));
+
+            return  result.ToList();
+            
+              
         }
     }
 }

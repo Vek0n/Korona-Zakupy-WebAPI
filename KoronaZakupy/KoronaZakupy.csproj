@@ -18,7 +18,6 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
     <Folder Include="Communication\" />
     <Folder Include="Communication\Interfaces\" />
     <Folder Include="Resources\" />

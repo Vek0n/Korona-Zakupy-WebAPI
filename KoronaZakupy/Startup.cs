@@ -14,6 +14,7 @@ using System.Text;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Repositories;
+using KoronaZakupy.UnitOfWork;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -56,6 +57,7 @@ namespace KoronaZakupy {
                 });
 
             services.AddScoped<IOrdersRepository, OrdersRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             services.AddScoped<IUserRegister, UserRegister>();
             services.AddScoped<IUserLogin, UserLogin>();
             services.AddScoped<IUserGetter, UsersGetter>();
