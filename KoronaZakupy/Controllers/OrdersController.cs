@@ -21,23 +21,24 @@ namespace KoronaZakupy.Controllers {
 
         private readonly ICreateOrder _createOrder;
         private readonly IOrderGetter _orderGetter;
+        private readonly IUpdateOrder _updateOrder;
 
         public OrdersController(
             ICreateOrder createOrder,
-            IOrderGetter orderGetter) {
+            IOrderGetter orderGetter,
+            IUpdateOrder updateOrder) {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
+            _updateOrder = updateOrder;
            
         }
-
 
         [AllowAnonymous]
         [HttpGet("{id}")]
         public IEnumerable<OrderWithUsers> GetOrders(string id) {
 
-            var result = _orderGetter.GetOrders(id);
-
-            return result;
+            return _orderGetter.GetOrders(id);
+                    
         }
 
 
@@ -46,12 +47,17 @@ namespace KoronaZakupy.Controllers {
         public async Task<object> Add(OrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
-
         }
 
-        
 
+        [AllowAnonymous]
+        [HttpGet("finish/{id}")]
+        public async Task CompleteOrder(long id) {
 
+            await _updateOrder.FinishOrder(id);
+            // TODO
+            // IUpdateOrderResponse
+        }
 
     }
 }

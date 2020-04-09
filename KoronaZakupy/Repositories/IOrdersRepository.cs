@@ -14,6 +14,7 @@ namespace KoronaZakupy.Repositories
         Task<Order> ReadOrderAsync(long id);
         Task<IEnumerable<Order>> ReadAllOrdersAsync();
         Task DeleteOrderAsync(long id);
+        Task<Order> FindById(long id);
         #endregion
 
         #region Other query

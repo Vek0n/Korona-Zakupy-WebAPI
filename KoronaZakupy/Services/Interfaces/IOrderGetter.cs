@@ -9,6 +9,6 @@ namespace KoronaZakupy.Services.Interfaces {
     public interface IOrderGetter : IBaseOrder {
 
         public IEnumerable<OrderWithUsers> GetOrders(string userId);
-
+        public IEnumerable<OrderWithUsers> GetActiveOrders(string userId);
     }
 }

@@ -65,6 +65,7 @@ namespace KoronaZakupy {
             services.AddScoped<ITokenGenerator, TokenGenerator>();
             services.AddScoped<ICreateOrder, CreateOrder>();
             services.AddScoped<IOrderGetter, OrderGetter>();
+            services.AddScoped<IUpdateOrder, UpdateOrder>();
 
             services.AddRazorPages();
         }

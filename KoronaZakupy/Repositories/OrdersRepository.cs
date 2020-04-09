@@ -68,11 +68,13 @@ namespace KoronaZakupy.Repositories {
         }
 
 
+
         public async Task UpdateOrderAsync(Order order)
         {
             _ordersDb.Entry(order).State = EntityState.Modified;
-             _ordersDb.Update(order);
+            _ordersDb.Update(order);
         }
+
 
         public async Task DeleteOrderAsync(long id)
         {
@@ -84,9 +86,15 @@ namespace KoronaZakupy.Repositories {
             _ordersDb.Remove(userOrder);
         }
 
+
         public async Task<bool> DoesIdExist(long id)
         {
             return await _ordersDb.Orders.AnyAsync(order =>order.OrderId == id);
+        }
+
+
+        public async Task<Order> FindById(long id) {
+            return await _ordersDb.Orders.FindAsync(id);
         }
 
 
@@ -120,6 +128,9 @@ namespace KoronaZakupy.Repositories {
             });
 
             return result;
+
+
+            // TODO ^^ same as above but RETURN only ACTIVE ORDERS
 
         }
     }

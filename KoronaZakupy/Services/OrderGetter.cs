@@ -17,7 +17,13 @@ namespace KoronaZakupy.Services {
        public IEnumerable<OrderWithUsers> GetOrders(string userId) {
 
             return _ordersRepository.FindByUserId(userId);
-            
+        }
+
+
+        public IEnumerable<OrderWithUsers> GetActiveOrders(string userId) {
+
+            //              --TODO --
+            return _ordersRepository.FindByUserId(userId);
         }
 
     }

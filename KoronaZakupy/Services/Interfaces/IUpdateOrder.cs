@@ -7,7 +7,8 @@ namespace KoronaZakupy.Services.Interfaces {
     public interface IUpdateOrder : IBaseOrder
     {
 
-        Task<IUpdateOrderResponse> UpdateOrder(Order updatedOrder, string id);
+        //Task<IUpdateOrderResponse> FinishOrder(Order updatedOrder, string id);
+        Task FinishOrder(long id);
 
     }
 }
