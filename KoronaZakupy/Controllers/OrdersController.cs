@@ -34,11 +34,20 @@ namespace KoronaZakupy.Controllers {
         }
 
         [AllowAnonymous]
-        [HttpGet("{id}")]
+        [HttpGet("all/{id}")]
         public IEnumerable<OrderWithUsers> GetOrders(string id) {
 
             return _orderGetter.GetOrders(id);
                     
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet("active/{id}")]
+        public IEnumerable<OrderWithUsers> GetActiveOrders(string id) {
+
+            return _orderGetter.GetActiveOrders(id);
+
         }
 
 

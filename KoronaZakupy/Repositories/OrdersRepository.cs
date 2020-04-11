@@ -107,7 +107,34 @@ namespace KoronaZakupy.Repositories {
             
         }
 
-        public IEnumerable<OrderWithUsers> FindByUserId(string userId) //return -record id- with userId in it
+
+        private IEnumerable<Order> FindActiveOrdersByUserIdRaw(string userId)
+        {
+            var result = _ordersDb.Orders.Include(order => order.Users)
+            .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
+            .Where(x => x.IsFinished == false);
+
+            return result.ToList();
+
+        }
+
+
+        public IEnumerable<OrderWithUsers> FindActiveOrdersByUserId(string userId) {
+
+            var rawResult = FindActiveOrdersByUserIdRaw(userId);
+
+            var result = rawResult.Select(order => new OrderWithUsers() {
+                OrderId = order.OrderId,
+                OrderDate = order.OrderDate,
+                IsFinished = order.IsFinished,
+                UsersId = order.Users.Select(u => u.UserId).ToList()
+            });
+
+            return result;
+        }
+
+
+        public IEnumerable<OrderWithUsers> FindByUserId(string userId)
         {
             var rawResult = FindByUserIdRaw(userId);
 
@@ -128,9 +155,6 @@ namespace KoronaZakupy.Repositories {
             });
 
             return result;
-
-
-            // TODO ^^ same as above but RETURN only ACTIVE ORDERS
 
         }
     }
