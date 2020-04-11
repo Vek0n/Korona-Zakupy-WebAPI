@@ -22,7 +22,6 @@ namespace KoronaZakupy.Services {
 
         public IEnumerable<OrderWithUsers> GetActiveOrders(string userId) {
 
-            //              --TODO --
             return _ordersRepository.FindActiveOrdersByUserId(userId);
         }
 
