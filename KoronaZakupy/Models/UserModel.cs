@@ -2,6 +2,8 @@
 namespace KoronaZakupy.Models {
     public class UserModel {
 
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public long Rating { get; set; }

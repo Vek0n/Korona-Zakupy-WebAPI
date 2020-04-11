@@ -9,6 +9,9 @@ namespace KoronaZakupy.Services.Interfaces {
 
         //Task<IUpdateOrderResponse> FinishOrder(Order updatedOrder, string id);
         Task FinishOrder(long id);
+        Task ConfirmFinishedOrder(long id);
+        Task<bool> DidBothUsersConfirmedFinishedOrder(long id);
+        Task CancelConfirmationOfFinisedOrder(long id);
 
     }
 }

@@ -6,10 +6,6 @@ using KoronaZakupy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
-using KoronaZakupy.Repositories;
-using KoronaZakupy.Entities.OrdersDB;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

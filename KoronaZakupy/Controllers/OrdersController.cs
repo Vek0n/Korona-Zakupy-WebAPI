@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 using KoronaZakupy.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
-using KoronaZakupy.Repositories;
 using KoronaZakupy.Entities.OrdersDB;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace KoronaZakupy.Controllers {
 
@@ -30,15 +26,13 @@ namespace KoronaZakupy.Controllers {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
             _updateOrder = updateOrder;
-           
         }
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
         public IEnumerable<OrderWithUsers> GetOrders(string id) {
 
-            return _orderGetter.GetOrders(id);
-                    
+            return _orderGetter.GetOrders(id);          
         }
 
 
@@ -47,7 +41,6 @@ namespace KoronaZakupy.Controllers {
         public IEnumerable<OrderWithUsers> GetActiveOrders(string id) {
 
             return _orderGetter.GetActiveOrders(id);
-
         }
 
 
@@ -67,6 +60,34 @@ namespace KoronaZakupy.Controllers {
             // TODO
             // IUpdateOrderResponse
         }
+
+        [AllowAnonymous]
+        [HttpGet("confirm/{id}")]
+        public async Task ConfirmFinishedOrder(long id) {
+
+            await _updateOrder.ConfirmFinishedOrder(id);
+
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet("confirm/cancel/{id}")]
+        public async Task CancelConfirmation(long id) {
+
+            await _updateOrder.CancelConfirmationOfFinisedOrder(id);
+
+        }
+
+        [AllowAnonymous]
+        [HttpGet("confirm/check")]
+        public async Task<bool> CheckConfirmation(long id) {
+
+            return await _updateOrder.DidBothUsersConfirmedFinishedOrder(id);
+
+        }
+
+
+
 
     }
 }
