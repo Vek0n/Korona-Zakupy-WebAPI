@@ -111,7 +111,8 @@ namespace KoronaZakupy.Repositories {
 
 
         public async Task<Order> FindByIdAsync(long id) {
-            return await _ordersDb.Orders.FindAsync(id);
+            return  await _ordersDb.Orders.Include(o=> o.Users).ThenInclude(row => row.User)
+                .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<OrderWithUsers>> FindByUserIdAsync(string userId)
