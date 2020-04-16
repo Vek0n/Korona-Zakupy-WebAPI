@@ -5,7 +5,8 @@ using KoronaZakupy.Models;
 using Microsoft.AspNetCore.Authorization;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Entities.OrdersDB;
-
+using KoronaZakupy.Repositories;
+using KoronaZakupy.UnitOfWork;
 
 namespace KoronaZakupy.Controllers {
 
@@ -13,34 +14,61 @@ namespace KoronaZakupy.Controllers {
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
-    public class OrdersController {
+    public class OrdersController : ControllerBase
+    {
 
         private readonly ICreateOrder _createOrder;
         private readonly IOrderGetter _orderGetter;
         private readonly IUpdateOrder _updateOrder;
 
+        private readonly IOrdersRepository repo;
+        private readonly IUnitOfWork unitOfWork;
+
         public OrdersController(
             ICreateOrder createOrder,
             IOrderGetter orderGetter,
-            IUpdateOrder updateOrder) {
+            IUpdateOrder updateOrder,
+            IOrdersRepository repo,
+            IUnitOfWork unitOfWork) {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
             _updateOrder = updateOrder;
+            this.repo = repo;
+            this.unitOfWork = unitOfWork;
         }
+
+        // TODO: Tylko do testowania, na koniec usunąć
+        //[AllowAnonymous]
+        //[HttpGet("test")]
+        //public async Task<IActionResult> Test()
+        //{
+        //    await _updateOrder.ConfirmFinishedOrder(4, "26c3f897-04e2-4347-84c2-185d8be381cb");
+        //    await _updateOrder.ConfirmFinishedOrder(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
+        //    var result = await _updateOrder.DidBothUsersConfirmedFinishedOrder(4);
+        //    return Ok();
+        //}
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
-        public IEnumerable<OrderWithUsers> GetOrders(string id) {
+        public async Task<IEnumerable<OrderWithUsers>> GetOrders(string id) {
 
-            return _orderGetter.GetOrders(id);          
+            return await _orderGetter.GetOrdersAsync(id);          
+        }
+
+        [AllowAnonymous]
+        [HttpGet("active")]
+        public async Task<IEnumerable<OrderWithUsers>> GetActiveOrdes(string id)
+        {
+
+            return  await _orderGetter.GetActiveOrdersAsync();
         }
 
 
         [AllowAnonymous]
         [HttpGet("active/{id}")]
-        public IEnumerable<OrderWithUsers> GetActiveOrders(string id) {
+        public async Task <IEnumerable<OrderWithUsers>> GetUserActiveOrders(string id) {
 
-            return _orderGetter.GetActiveOrders(id);
+            return await _orderGetter.GetUserActiveOrdersAsync(id);
         }
 
 
@@ -65,7 +93,7 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("confirm/{id}")]
         public async Task ConfirmFinishedOrder(long id) {
 
-            await _updateOrder.ConfirmFinishedOrder(id);
+           // await _updateOrder.ConfirmFinishedOrder(orderId,userId);
 
         }
 
@@ -74,7 +102,7 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("confirm/cancel/{id}")]
         public async Task CancelConfirmation(long id) {
 
-            await _updateOrder.CancelConfirmationOfFinisedOrder(id);
+            //await _updateOrder.CancelConfirmationOfFinisedOrder(id,userId);
 
         }
 

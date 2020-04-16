@@ -6,6 +6,7 @@ using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Models;
 using KoronaZakupy.Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KoronaZakupy.Services {
     public class OrderGetter : BaseOrderService, IOrderGetter {
@@ -14,15 +15,21 @@ namespace KoronaZakupy.Services {
 
         }
 
-       public IEnumerable<OrderWithUsers> GetOrders(string userId) {
+        public async Task<IEnumerable<OrderWithUsers>> GetActiveOrdersAsync()
+        {
 
-            return _ordersRepository.FindByUserId(userId);
+            return await _ordersRepository.FindActiveUserAsync();
+        }
+
+        public async Task<IEnumerable<OrderWithUsers>> GetOrdersAsync(string userId) {
+
+            return await _ordersRepository.FindByUserIdAsync(userId);
         }
 
 
-        public IEnumerable<OrderWithUsers> GetActiveOrders(string userId) {
+        public async Task<IEnumerable<OrderWithUsers>> GetUserActiveOrdersAsync(string userId) {
 
-            return _ordersRepository.FindActiveOrdersByUserId(userId);
+            return await _ordersRepository.FindActiveOrdersByUserIdAsync(userId);
         }
 
     }

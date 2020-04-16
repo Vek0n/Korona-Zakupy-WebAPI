@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KoronaZakupy.Migrations
 {
-    public partial class OrDBMig : Migration
+    public partial class a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,9 @@ namespace KoronaZakupy.Migrations
                     OrderId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderDate = table.Column<DateTime>(nullable: false),
-                    IsFinished = table.Column<bool>(nullable: false)
+                    Products = table.Column<string>(nullable: true),
+                    IsFinished = table.Column<bool>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +39,8 @@ namespace KoronaZakupy.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    OrderId = table.Column<long>(nullable: false)
+                    OrderId = table.Column<long>(nullable: false),
+                    IsOrderConfirmed = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

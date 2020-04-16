@@ -15,16 +15,19 @@ namespace KoronaZakupy.Services {
         }
 
         public async Task<object> PlaceOrder(OrderModel model)
-        {
+        { 
+            // TODO: ADD MAPPING
             Order order = new Order {
-                IsFinished = model.IsFinished,
-                OrderDate = model.OrderDate
+
+                OrderId = 0,
+                OrderDate = model.OrderDate,
+                Products = model.Products,
+                IsActive = true,
+                IsFinished = false
+
             };
 
-            string _userId1 = model.UserId1;
-            string _userId2 = model.UserId2;
-
-            await _ordersRepository.CreateOrderAsync(order, _userId1, _userId2);
+            await _ordersRepository.CreateOrderAsync(order,model.UserId1);
             await _unitOfWork.CompleteAsync();
            
             return("OK");

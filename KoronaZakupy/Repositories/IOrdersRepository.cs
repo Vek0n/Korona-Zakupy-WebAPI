@@ -9,18 +9,25 @@ namespace KoronaZakupy.Repositories
         Task CreateUserAsync(User user);
 
         #region Order CRUD
-        Task CreateOrderAsync(Order order, string userId1, string userId2);
+        Task CreateOrderAsync(Order order, string userId);
         Task UpdateOrderAsync(Order order);
+        Task UpdateUserOrderAsync(UserOrder userOrder);
         Task<Order> ReadOrderAsync(long id);
         Task<IEnumerable<Order>> ReadAllOrdersAsync();
         Task DeleteOrderAsync(long id);
-        Task<Order> FindById(long id);
         #endregion
 
         #region Other query
-        Task<bool> DoesIdExist(long id);
-        IEnumerable<OrderWithUsers> FindByUserId(string userId);
-        IEnumerable<OrderWithUsers> FindActiveOrdersByUserId(string userId);
+        Task<Order> FindByIdAsync(long id);
+        Task AddRelationAsync(Order order,string userId);
+        Task AddRelationAsync(long orderId, string userId);
+        Task<bool> DoesIdExistAsync(long id);
+
+        Task <IEnumerable<OrderWithUsers>> FindByUserIdAsync(string userId);
+        Task<IEnumerable<OrderWithUsers>> FindActiveUserAsync();
+        Task <IEnumerable<OrderWithUsers>> FindActiveOrdersByUserIdAsync(string userId);
+        Task<UserOrder> ConfirmOrder(long orderId, string userId);
+        Task<UserOrder> CancelOfConfirmationOrder(long orderId, string userId);
         #endregion
 
     }

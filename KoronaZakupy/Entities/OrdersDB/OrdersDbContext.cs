@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Newtonsoft.Json;
 
 namespace KoronaZakupy.Entities.OrdersDB
 {
@@ -11,14 +15,33 @@ namespace KoronaZakupy.Entities.OrdersDB
 
         public DbSet<Order> Orders {get; set;}
 
-      //  public DbSet<UserOrder> UsersOrders { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             builder.Entity<UserOrder>()
-                   .HasKey(uo => new { uo.UserId, uo.OrderId });
+                .HasKey(uo => new { uo.UserId, uo.OrderId });
+
+            var converter = new ValueConverter<IEnumerable<string>, string>(
+                v => JsonConvert.SerializeObject(v),
+                v => JsonConvert.DeserializeObject<IEnumerable<string>>(v) ?? new List<string>());
+
+            var comparer = new ValueComparer<IEnumerable<string>>(
+                (l, r) => JsonConvert.SerializeObject(l) == JsonConvert.SerializeObject(r),
+                v => v == null ? 0 : JsonConvert.SerializeObject(v).GetHashCode(),
+                v => JsonConvert.DeserializeObject<IEnumerable<string>>(JsonConvert.SerializeObject(v)));
+
+            builder.Entity<Order>()
+                .Property(order => order.Products)
+                .HasConversion(converter)
+                .Metadata.SetValueConverter(converter);
+
+            builder.Entity<Order>()
+                .Property(order => order.Products)
+                .Metadata.SetValueComparer(comparer);
+
+
+
 
         }
     }

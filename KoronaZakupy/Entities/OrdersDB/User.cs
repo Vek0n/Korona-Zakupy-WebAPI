@@ -10,8 +10,5 @@ namespace KoronaZakupy.Entities.OrdersDB
         public string UserId { get; set; }
 
         public ICollection<UserOrder> Orders { get; set; }
-
-
-        //public IList<ManyToManyUserOrder> ManyToManyUsersOrders { get; set; }
     }
 }

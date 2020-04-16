@@ -17,7 +17,16 @@ namespace KoronaZakupy.UnitOfWork
 
         public async Task CompleteAsync()
         {
-            await _orderDb.SaveChangesAsync();
+            try
+            {
+                var result = await _orderDb.SaveChangesAsync();
+            }
+
+            catch(Exception ex)
+            {
+                string xd = ex.Message;
+            }
         }
+        
     }
 }

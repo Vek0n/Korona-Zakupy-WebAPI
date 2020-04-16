@@ -16,6 +16,7 @@ namespace KoronaZakupy.Services {
 
         public async Task<ActionResult<IdentityUser>> GetUser(string id, UserManager<IdentityUser> userManager) {
             var user = await userManager.FindByIdAsync(id);
+
             if (user == null) {
                 throw new ApplicationException("User Not Found");
             }

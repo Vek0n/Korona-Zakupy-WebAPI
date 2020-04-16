@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace KoronaZakupy.Models {
@@ -7,11 +8,12 @@ namespace KoronaZakupy.Models {
         [Required]
         public string UserId1 { get; set; }
 
-        [Required]
-        public string UserId2 { get; set; }
-
         public DateTime OrderDate { get; set; }
 
+        public List<string> Products { get; set; }
+
         public bool IsFinished { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

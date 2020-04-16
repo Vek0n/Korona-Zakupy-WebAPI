@@ -12,54 +12,69 @@ namespace KoronaZakupy.Services {
         {
             
         }
-        //TODO
-        //public async Task<IUpdateOrderResponse> FinishOrder(long id)
+       
         public async Task FinishOrder(long id)
         {
-            var order = _ordersRepository.FindById(id).Result;
+            var order = await _ordersRepository.FindByIdAsync(id);
             order.IsFinished = true;
-            await _ordersRepository.UpdateOrderAsync(order);
-            await _unitOfWork.CompleteAsync();
+
+            await FinishUpdate(order);
             
         }
 
-        public async Task ConfirmFinishedOrder(long id) {
-            var order = _ordersRepository.FindById(id).Result;
+        public async Task ChangeActiveProperty(long id)
+        {
+            var order = await _ordersRepository.FindByIdAsync(id);
 
-            if (order.user1Confirmed == false)
-                order.user1Confirmed = true;
+            if (order.IsActive)
+                order.IsActive = false;
             else
-                order.user2Confirmed = true;
+                order.IsActive = true;
 
-            await _ordersRepository.UpdateOrderAsync(order);
+            await FinishUpdate(order);
+        }
+
+        public async Task ConfirmFinishedOrder(long id, string userId)
+        {
+
+            var userOrder = await _ordersRepository.ConfirmOrder(id, userId);
+           
+            await FinishUpdate(userOrder);
+
+        }
+
+        public async Task CancelConfirmationOfFinisedOrder(long id, string userId)
+        {
+            var userOrder = await _ordersRepository.CancelOfConfirmationOrder(id, userId);
+
+            await FinishUpdate(userOrder);
+
+        }
+
+        private async Task FinishUpdate<T>(T resource)
+        {
+            if (resource is Order)
+                await _ordersRepository.UpdateOrderAsync(resource as Order);
+            if (resource is UserOrder)
+                await _ordersRepository.UpdateUserOrderAsync(resource as UserOrder);
+
             await _unitOfWork.CompleteAsync();
-
         }
 
 
-        public async Task CancelConfirmationOfFinisedOrder(long id) {
-            var order = _ordersRepository.FindById(id).Result;
+        public async Task<bool> DidBothUsersConfirmedFinishedOrder(long id)
+        {
 
-            if (order.user1Confirmed == true)
-                order.user1Confirmed = false;
-            else
-                order.user2Confirmed = false;
+            var order = await _ordersRepository.FindByIdAsync(id);
+            
+            foreach( var userOrderRelation in order.Users)
+            {
+                if (!userOrderRelation.IsOrderConfirmed)
+                    return false;
+            }
 
-            await _ordersRepository.UpdateOrderAsync(order);
-            await _unitOfWork.CompleteAsync();
 
+            return true;
         }
-
-
-        public async Task<bool> DidBothUsersConfirmedFinishedOrder(long id) {
-
-            var order = _ordersRepository.FindById(id).Result;
-            if (order.user2Confirmed == true && order.user1Confirmed == true)
-                return true;
-            else
-                return false;
-        }
-
-
     }
 }

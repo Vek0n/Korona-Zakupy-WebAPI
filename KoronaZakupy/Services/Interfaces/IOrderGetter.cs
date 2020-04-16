@@ -8,7 +8,9 @@ using System.Collections.Generic;
 namespace KoronaZakupy.Services.Interfaces {
     public interface IOrderGetter : IBaseOrder {
 
-        public IEnumerable<OrderWithUsers> GetOrders(string userId);
-        public IEnumerable<OrderWithUsers> GetActiveOrders(string userId);
+        public Task<IEnumerable<OrderWithUsers>> GetOrdersAsync(string userId);
+        public Task<IEnumerable<OrderWithUsers>> GetUserActiveOrdersAsync(string userId);
+
+        public Task<IEnumerable<OrderWithUsers>> GetActiveOrdersAsync();
     }
 }
