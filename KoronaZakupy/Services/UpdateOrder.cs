@@ -73,8 +73,15 @@ namespace KoronaZakupy.Services {
                     return false;
             }
 
-
             return true;
         }
+
+        public async Task AcceptOrder(long id, string userId) {
+
+             await _ordersRepository.AddRelationAsync(id, userId);
+             
+             await _unitOfWork.CompleteAsync();
+        }
+
     }
 }

@@ -13,6 +13,6 @@ namespace KoronaZakupy.Services.Interfaces {
         Task ConfirmFinishedOrder(long id, string userId);
         Task<bool> DidBothUsersConfirmedFinishedOrder(long id);
         Task CancelConfirmationOfFinisedOrder(long id, string userId);
-
+        Task AcceptOrder(long id, string userId);
     }
 }

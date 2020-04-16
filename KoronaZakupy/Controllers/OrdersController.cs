@@ -81,6 +81,14 @@ namespace KoronaZakupy.Controllers {
 
 
         [AllowAnonymous]
+        [HttpPost("accept/{id}/{userId}")]
+        public async Task Accept(long id, string userId) {
+
+             await _updateOrder.AcceptOrder(id, userId);
+        }
+
+
+        [AllowAnonymous]
         [HttpGet("finish/{id}")]
         public async Task CompleteOrder(long id) {
 
@@ -90,24 +98,24 @@ namespace KoronaZakupy.Controllers {
         }
 
         [AllowAnonymous]
-        [HttpGet("confirm/{id}")]
-        public async Task ConfirmFinishedOrder(long id) {
+        [HttpGet("confirm/{id}/{userId}")]
+        public async Task ConfirmFinishedOrder(long id, string userId) {
 
-           // await _updateOrder.ConfirmFinishedOrder(orderId,userId);
+           await _updateOrder.ConfirmFinishedOrder(id, userId);
 
         }
 
 
         [AllowAnonymous]
-        [HttpGet("confirm/cancel/{id}")]
-        public async Task CancelConfirmation(long id) {
+        [HttpGet("confirm/cancel/{id}/{userId}")]
+        public async Task CancelConfirmation(long id, string userId) {
 
-            //await _updateOrder.CancelConfirmationOfFinisedOrder(id,userId);
+            await _updateOrder.CancelConfirmationOfFinisedOrder(id,userId);
 
         }
 
         [AllowAnonymous]
-        [HttpGet("confirm/check")]
+        [HttpGet("confirm/check/{id}")]
         public async Task<bool> CheckConfirmation(long id) {
 
             return await _updateOrder.DidBothUsersConfirmedFinishedOrder(id);

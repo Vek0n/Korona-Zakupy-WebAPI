@@ -30,5 +30,6 @@
     <Folder Include="Communication\Interfaces\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Interfaces\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

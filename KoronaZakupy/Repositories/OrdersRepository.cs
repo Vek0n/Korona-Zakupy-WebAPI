@@ -46,7 +46,8 @@ namespace KoronaZakupy.Repositories {
         {
             var user = await _ordersDb.Users.FirstOrDefaultAsync(user => user.UserId == userId);
             var order =   await _ordersDb.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
-
+            order.IsActive = false;
+            
             var userOrder = new UserOrder()
             {
                 User = user,
@@ -56,6 +57,7 @@ namespace KoronaZakupy.Repositories {
 
             await _ordersDb.AddAsync(userOrder);
         }
+
 
         public async Task<Order> ReadOrderAsync(long id)
         {
@@ -111,7 +113,8 @@ namespace KoronaZakupy.Repositories {
 
 
         public async Task<Order> FindByIdAsync(long id) {
-            return await _ordersDb.Orders.FindAsync(id);
+            return await _ordersDb.Orders.Include(o => o.Users).ThenInclude(row => row.User)
+                .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<OrderWithUsers>> FindByUserIdAsync(string userId)
@@ -186,6 +189,7 @@ namespace KoronaZakupy.Repositories {
                  .ThenInclude(row => row.User).Where(order => order.IsActive == true);
         }
 
+
         public async Task<UserOrder> ConfirmOrder(long orderId, string userId)
         {
             var result = new UserOrder()
@@ -198,6 +202,7 @@ namespace KoronaZakupy.Repositories {
             return result;
           
         }
+
 
         public async Task<UserOrder> CancelOfConfirmationOrder(long orderId, string userId)
         {
