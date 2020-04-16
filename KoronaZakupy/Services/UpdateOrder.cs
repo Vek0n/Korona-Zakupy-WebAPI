@@ -43,7 +43,7 @@ namespace KoronaZakupy.Services {
 
         }
 
-        public async Task CancelConfirmationOfFinisedOrder(long id, string userId)
+        public async Task CancelConfirmationOfFinishedOrder(long id, string userId)
         {
             var userOrder = await _ordersRepository.CancelOfConfirmationOrder(id, userId);
 
@@ -79,9 +79,16 @@ namespace KoronaZakupy.Services {
         public async Task AcceptOrder(long id, string userId) {
 
              await _ordersRepository.AddRelationAsync(id, userId);
-             
              await _unitOfWork.CompleteAsync();
         }
+
+
+        public async Task UnAcceptOrder(long id, string userId) {
+
+            //REMEMBER: isActive = true;
+
+        }
+
 
     }
 }

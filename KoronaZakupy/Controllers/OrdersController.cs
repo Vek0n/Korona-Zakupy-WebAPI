@@ -55,9 +55,10 @@ namespace KoronaZakupy.Controllers {
             return await _orderGetter.GetOrdersAsync(id);          
         }
 
+
         [AllowAnonymous]
         [HttpGet("active")]
-        public async Task<IEnumerable<OrderWithUsers>> GetActiveOrdes(string id)
+        public async Task<IEnumerable<OrderWithUsers>> GetActiveOrders()
         {
 
             return  await _orderGetter.GetActiveOrdersAsync();
@@ -66,7 +67,7 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpGet("active/{id}")]
-        public async Task <IEnumerable<OrderWithUsers>> GetUserActiveOrders(string id) {
+        public async Task <IEnumerable<OrderWithUsers>> GetUsersActiveOrders(string id) {
 
             return await _orderGetter.GetUserActiveOrdersAsync(id);
         }
@@ -86,6 +87,15 @@ namespace KoronaZakupy.Controllers {
 
              await _updateOrder.AcceptOrder(id, userId);
         }
+
+
+        [AllowAnonymous]
+        [HttpPost("accept/cancel/{id}/{userId}")]
+        public async Task UnAccept(long id, string userId) {
+
+            await _updateOrder.UnAcceptOrder(id, userId);
+        }
+
 
 
         [AllowAnonymous]
@@ -110,7 +120,7 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("confirm/cancel/{id}/{userId}")]
         public async Task CancelConfirmation(long id, string userId) {
 
-            await _updateOrder.CancelConfirmationOfFinisedOrder(id,userId);
+            await _updateOrder.CancelConfirmationOfFinishedOrder(id,userId);
 
         }
 
