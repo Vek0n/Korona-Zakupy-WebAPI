@@ -38,11 +38,11 @@ namespace KoronaZakupy.Controllers {
             this.unitOfWork = unitOfWork;
         }
 
-        //// TODO: Tylko do testowania, na koniec usunąć
-        [AllowAnonymous]
-        [HttpGet("test")]
-        public async Task<IActionResult> Test()
-        {
+        ////// TODO: Tylko do testowania, na koniec usunąć
+        //[AllowAnonymous]
+        //[HttpGet("test")]
+        //public async Task<IActionResult> Test()
+        //{
             // await _updateOrder.ConfirmFinishedOrder(4, "26c3f897-04e2-4347-84c2-185d8be381cb");
             // await _updateOrder.ConfirmFinishedOrder(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
             // var result = await _updateOrder.DidBothUsersConfirmedFinishedOrder(4);
@@ -70,27 +70,27 @@ namespace KoronaZakupy.Controllers {
             // await repo.UpdateAsync(xd);
             // await unitOfWork.CompleteAsync();
 
-            var Order = new Order()
-            {
-                OrderId = 0,
-                OrderDate = new System.DateTime(2020, 4, 17),
-                IsActive = false,
-                IsFinished = true,
-                Products = new string[]
-               {
-                    "Harnas",
-                    "Tatra",
-                    "Mydlo",
-                    "Cytryny"
-               },
-            };
+        //    var Order = new Order()
+        //    {
+        //        OrderId = 0,
+        //        OrderDate = new System.DateTime(2020, 4, 17),
+        //        IsActive = false,
+        //        IsFinished = true,
+        //        Products = new string[]
+        //       {
+        //            "Harnas",
+        //            "Tatra",
+        //            "Mydlo",
+        //            "Cytryny"
+        //       },
+        //    };
 
-            await repo.CreateAsync(Order, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-            await unitOfWork.CompleteAsync();
+        //    await repo.CreateAsync(Order, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
+        //    await unitOfWork.CompleteAsync();
 
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
@@ -148,7 +148,7 @@ namespace KoronaZakupy.Controllers {
 
             await _updateOrder.FinishOrder(id);
             // TODO
-            // IUpdateOrderResponse
+            // IUpdateOrderResponsea
         }
 
         [AllowAnonymous]
@@ -175,8 +175,6 @@ namespace KoronaZakupy.Controllers {
             return await _updateOrder.DidBothUsersConfirmedFinishedOrder(id);
 
         }
-
-
 
 
     }

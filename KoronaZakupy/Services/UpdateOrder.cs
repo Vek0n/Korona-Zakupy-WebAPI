@@ -58,8 +58,10 @@ namespace KoronaZakupy.Services {
 
         public async Task AcceptOrder(long id, string userId) {
 
-             await _ordersRepository.AddRelationAsync(id, userId);
-             await _unitOfWork.CompleteAsync();
+            await ChangeActiveProperty(id);
+
+            await _ordersRepository.AddRelationAsync(id, userId);
+            await _unitOfWork.CompleteAsync();
         }
 
 
@@ -72,7 +74,7 @@ namespace KoronaZakupy.Services {
         public async Task ChangeConfirmationOfFinishedOrder(long id, string userId)
         {
             var userOrder = await _ordersRepository.ChangeConfirmationOfOrderAsync(id, userId);
-
+            await ChangeActiveProperty(id);
             await FinishUpdate(userOrder);
         }
     }
