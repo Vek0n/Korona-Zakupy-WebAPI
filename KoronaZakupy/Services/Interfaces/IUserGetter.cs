@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using KoronaZakupy.Entities;
 
 namespace KoronaZakupy.Services.Interfaces {
     public interface IUserGetter {
 
-        public IEnumerable<IdentityUser> GetUsers(UserManager<IdentityUser> userManager);
+        public IEnumerable<Entities.UserDb.User> GetUsers(UserManager<Entities.UserDb.User> userManager);
 
-        Task<ActionResult<IdentityUser>> GetUser(string id, UserManager<IdentityUser> userManager);
+        Task<ActionResult<Entities.UserDb.User>> GetUser(string id, UserManager<Entities.UserDb.User> userManager);
 
     }
 }

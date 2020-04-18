@@ -13,7 +13,7 @@ namespace KoronaZakupy.Services {
 
     public class TokenGenerator : ITokenGenerator{
 
-        public async Task<object> GenerateJwtToken(string email, IdentityUser user, IConfiguration configuration) {
+        public async Task<object> GenerateJwtToken(string email, Entities.UserDb.User user, IConfiguration configuration) {
 
             var claims = new List<Claim>
             {

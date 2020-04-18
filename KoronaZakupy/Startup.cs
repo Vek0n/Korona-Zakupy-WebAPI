@@ -32,10 +32,10 @@ namespace KoronaZakupy {
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
-            services.AddDbContext<UsersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UsersDatabase")));
+            services.AddDbContext<Entities.UserDb.UsersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UsersDatabase")));
             services.AddDbContext<OrdersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OrdersDatabase")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>();
+            services.AddIdentity<Entities.UserDb.User, IdentityRole>().AddEntityFrameworkStores<Entities.UserDb.UsersDbContext>();
 
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
@@ -66,6 +66,7 @@ namespace KoronaZakupy {
             services.AddScoped<ICreateOrder, CreateOrder>();
             services.AddScoped<IOrderGetter, OrderGetter>();
             services.AddScoped<IUpdateOrder, UpdateOrder>();
+            services.AddScoped<ICompleteUserInfo, CompleteUserInfo>();
 
             services.AddRazorPages();
         }

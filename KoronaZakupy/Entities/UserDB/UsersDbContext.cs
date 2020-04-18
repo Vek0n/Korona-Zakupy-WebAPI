@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
-namespace KoronaZakupy.Services {
-    public class UsersDbContext : IdentityDbContext{
+namespace KoronaZakupy.Entities.UserDb {
+    public class UsersDbContext : IdentityDbContext<Entities.UserDb.User>{
 
         public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options) { }
 

@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using KoronaZakupy.Entities.OrdersDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
+using KoronaZakupy.Entities;
 
 namespace KoronaZakupy.Repositories {
     public class OrdersRepository : IOrdersRepository{
@@ -14,40 +16,22 @@ namespace KoronaZakupy.Repositories {
             _ordersDb = ordersDb;
         }
 
+        #region Refactoring
 
-        public async Task CreateUserAsync(User user)
+        public async Task CreateAsync<T>(T resource, string userId ="") 
         {
-           await _ordersDb.Users.AddAsync(user);
-        }
+                await _ordersDb.AddAsync(resource);
 
-
-        public async Task CreateOrderAsync(Order order, string userId)
-        {
-            
-           var result = await _ordersDb.Orders.AddAsync(order);
-            await AddRelationAsync(order, userId);   
-        }
-
-        public async Task AddRelationAsync(Order order, string userId)
-        {
-            var user = await _ordersDb.Users.FirstOrDefaultAsync(user => user.UserId == userId);
-
-            var userOrder = new UserOrder()
-            {
-                User = user,
-                Order = order,
-                IsOrderConfirmed = false
-            };
-
-            await _ordersDb.AddAsync(userOrder);
+            if (resource is Order)
+                await AddRelationAsync( (resource as Order).OrderId, userId);
         }
 
         public async Task AddRelationAsync(long orderId, string userId)
         {
             var user = await _ordersDb.Users.FirstOrDefaultAsync(user => user.UserId == userId);
-            var order =   await _ordersDb.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
+            var order = await _ordersDb.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
             order.IsActive = false;
-            
+
             var userOrder = new UserOrder()
             {
                 User = user,
@@ -59,97 +43,59 @@ namespace KoronaZakupy.Repositories {
         }
 
 
-        public async Task<Order> ReadOrderAsync(long id)
+        public async Task UpdateAsync<T>(T resource)
         {
-            if (!await _ordersDb.Orders.AnyAsync(o => o.OrderId == id))
-                return null;
-
-            var order = await _ordersDb.Orders.FindAsync(id);
-            _ordersDb.Entry(order).State = EntityState.Detached;
-
-            if (order == null)
+            try
             {
-                return null;
+                _ordersDb.Entry(resource).State = EntityState.Modified;//????
+                _ordersDb.Update(resource);
             }
-
-            return order;
+            catch(Exception ex)
+            {
+                var xe = ex.Message;
+            }
         }
 
-
-        public async Task<IEnumerable<Order>> ReadAllOrdersAsync()
+        public async Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId)
         {
-            return await _ordersDb.Orders.ToListAsync();
+            _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            var result = new UserOrder()
+            {
+                UserId = userId,
+                OrderId = orderId,
+                IsOrderConfirmed = !(await GetIsOrderConfirmed(orderId, userId))
+            };
+            _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
+
+            return result;
         }
 
-
-
-        public async Task UpdateOrderAsync(Order order)
+        private async Task<bool> GetIsOrderConfirmed(long orderId, string userId)
         {
-            _ordersDb.Entry(order).State = EntityState.Modified;
-            _ordersDb.Update(order);
+            return (await _ordersDb.Orders.Include(order => order.Users)
+                 .ThenInclude(row => row.User)
+                 .Where(order => order.OrderId == orderId).SingleOrDefaultAsync()
+                 ).Users.SingleOrDefault(uo => uo.OrderId == orderId && uo.UserId == userId).IsOrderConfirmed;
         }
 
-        public async Task UpdateUserOrderAsync(UserOrder userOrder)
-        {
-            _ordersDb.Entry(userOrder).State = EntityState.Modified;
-            _ordersDb.Update(userOrder);
-        }
+        #endregion 
 
-        public async Task DeleteOrderAsync(long id)
-        {
-            // Not testing
-            var order = await _ordersDb.Orders.FindAsync(id);
-            var userOrder = (await _ordersDb.Orders.FindAsync(id)).Users.FirstOrDefault(uo => uo.OrderId == id);
-
-            _ordersDb.Orders.Remove(order);
-            _ordersDb.Remove(userOrder);
-        }
-
-
-        public async Task<bool> DoesIdExistAsync(long id)
-        {
-            return await _ordersDb.Orders.AnyAsync(order =>order.OrderId == id);
-        }
-
-
-        public async Task<Order> FindByIdAsync(long id) {
+        public async Task<Order> FindOrderByOrderIdAsync(long id) {
 
             return  await _ordersDb.Orders.Include(o=> o.Users).ThenInclude(row => row.User)
                 .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<OrderWithUsers>> FindByUserIdAsync(string userId)
-        {
-            var rawResult = await  FindByUserIdRaw(userId);
 
-            var result =   rawResult.Select(order => new OrderWithUsers()
+        public async Task<IEnumerable<OrderWithUsersId>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false)
+        {
+            var rawResult = await FindByUserIdRawAsync(userId, findByActivity);
+
+            var result = rawResult.Select(order => new OrderWithUsersId()
             {
                 OrderId = order.OrderId,
                 OrderDate = order.OrderDate,
-                IsFinished = order.IsFinished,
-                UsersId = order.Users.Select(u => u.UserId).ToList()
-            });
-
-            return result;
-        }
-
-        private async Task <IEnumerable<Order>> FindByUserIdRaw(string userId) //return -record id- with userId in it
-        {
-            var result = _ordersDb.Orders.Include(order => order.Users)
-            .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId));
-
-            return result.AsEnumerable();
-            
-        }
-
-
-        public async Task<IEnumerable<OrderWithUsers>> FindActiveOrdersByUserIdAsync(string userId) {
-
-            var rawResult = await FindActiveOrdersByUserIdRaw(userId);
-
-            var result =  rawResult.Select(order => new OrderWithUsers() {
-                OrderId = order.OrderId,
-                OrderDate = order.OrderDate,
+                Products = order.Products,
                 IsFinished = order.IsFinished,
                 IsActive = order.IsActive,
                 UsersId = order.Users.Select(u => u.UserId).ToList()
@@ -158,64 +104,42 @@ namespace KoronaZakupy.Repositories {
             return result;
         }
 
-        private async Task<IEnumerable<Order>> FindActiveOrdersByUserIdRaw(string userId)
+        private async Task<IEnumerable<Order>> FindByUserIdRawAsync(string userId, bool findByActivity = false)
         {
-            var result = _ordersDb.Orders.Include(order => order.Users)
-            .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
-            .Where(x => x.IsActive == true);
+            if (!findByActivity) {
+                return ( _ordersDb.Orders.Include(order => order.Users)
+               .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId)) ).AsEnumerable();
+            }
 
-            return result.ToList();
+            return ( _ordersDb.Orders.Include(order => order.Users)
+           .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
+           .Where(x => x.IsActive == true) ).AsEnumerable();
 
+        
         }
 
-        public async Task<IEnumerable<OrderWithUsers>> FindActiveUserAsync()
+        public async Task<IEnumerable<OrderWithUsersId>> FindActiveOrdersAsync()
         {
-            var rawResult = await FindActiveUserRawAsync();
+            var rawResult = await FindActiveOrdersRawAsync();
 
-            var result = rawResult.Select(order => new OrderWithUsers()
+            var result = rawResult.Select(order => new OrderWithUsersId()
             {
                 OrderId = order.OrderId,
                 OrderDate = order.OrderDate,
                 IsFinished = order.IsFinished,
                 IsActive = order.IsActive,
                 UsersId = order.Users.Select(u => u.UserId).ToList()
+              
             });
 
             return result;
         }
 
-        private async Task<IEnumerable<Order>> FindActiveUserRawAsync()
+        private async Task<IEnumerable<Order>> FindActiveOrdersRawAsync()
         {
             return _ordersDb.Orders.Include(order => order.Users)
                  .ThenInclude(row => row.User).Where(order => order.IsActive == true);
         }
 
-
-        public async Task<UserOrder> ConfirmOrder(long orderId, string userId)
-        {
-            var result = new UserOrder()
-            {
-                UserId = _ordersDb.Users.Where(user => user.UserId == userId).SingleOrDefault().UserId,
-                OrderId = _ordersDb.Orders.Where(order => order.OrderId == orderId).SingleOrDefault().OrderId,
-                IsOrderConfirmed = true
-            };
-
-            return result;
-          
-        }
-
-
-        public async Task<UserOrder> CancelOfConfirmationOrder(long orderId, string userId)
-        {
-            var result = new UserOrder()
-            {
-                UserId = _ordersDb.Users.Where(user => user.UserId == userId).SingleOrDefault().UserId,
-                OrderId = _ordersDb.Orders.Where(order => order.OrderId == orderId).SingleOrDefault().OrderId,
-                IsOrderConfirmed = false
-            };
-
-            return result;
-
-        }
     }
 }

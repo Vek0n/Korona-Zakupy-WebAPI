@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KoronaZakupy.Entities.OrdersDB
 {
-    public class User
+    public class User 
     {
         [Key]
         public string UserId { get; set; }

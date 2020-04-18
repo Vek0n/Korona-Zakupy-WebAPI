@@ -7,29 +7,31 @@ using KoronaZakupy.Models;
 using KoronaZakupy.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using KoronaZakupy.Entities;
 
 namespace KoronaZakupy.Services {
     public class OrderGetter : BaseOrderService, IOrderGetter {
 
-        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit) : base(repo, unit) {
-
+        private ICompleteUserInfo _completeUserInfo;
+        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit, ICompleteUserInfo completeUserInfo) : base(repo, unit) {
+            _completeUserInfo = completeUserInfo;
         }
 
-        public async Task<IEnumerable<OrderWithUsers>> GetActiveOrdersAsync()
+        public async Task<IEnumerable<OrderWithUsersInfo>> GetActiveOrdersAsync()
         {
 
-            return await _ordersRepository.FindActiveUserAsync();
+            return await  _completeUserInfo.CompleteAsync( await _ordersRepository.FindActiveOrdersAsync() );
         }
 
-        public async Task<IEnumerable<OrderWithUsers>> GetOrdersAsync(string userId) {
+        public async Task<IEnumerable<OrderWithUsersInfo>> GetOrdersAsync(string userId) {
 
-            return await _ordersRepository.FindByUserIdAsync(userId);
+            return await _completeUserInfo.CompleteAsync( await _ordersRepository.FindOrdersByUserIdAsync(userId) );
         }
 
 
-        public async Task<IEnumerable<OrderWithUsers>> GetUserActiveOrdersAsync(string userId) {
+        public async Task<IEnumerable<OrderWithUsersInfo>> GetUserActiveOrdersAsync(string userId) {
 
-            return await _ordersRepository.FindActiveOrdersByUserIdAsync(userId);
+            return await _completeUserInfo.CompleteAsync(await _ordersRepository.FindOrdersByUserIdAsync(userId,true));
         }
 
     }
