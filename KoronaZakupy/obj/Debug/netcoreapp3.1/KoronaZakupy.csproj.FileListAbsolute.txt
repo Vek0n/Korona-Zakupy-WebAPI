@@ -1,136 +1,66 @@
-<<<<<<< HEAD
-=======
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/appsettings.Development.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/appsettings.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.exe
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.deps.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.runtimeconfig.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.runtimeconfig.dev.json
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.pdb
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/AutoMapper.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Data.SqlClient.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.SqlServer.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Stores.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Identity.Client.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Runtime.Caching.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/sni.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/sni.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/staticwebassets/KoronaZakupy.StaticWebAssets.Manifest.cache
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/staticwebassets/KoronaZakupy.StaticWebAssets.xml
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.MvcApplicationPartsAssemblyInfo.cache
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.AssemblyInfoInputs.cache
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.AssemblyInfo.cs
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.RazorTargetAssemblyInfo.cache
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csproj.CopyComplete
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.dll
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.pdb
-C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy-WebAPI/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csprojAssemblyReference.cache
->>>>>>> 6c778947d942a05051d4a45006a88acb2e67784e
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/appsettings.Development.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/appsettings.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.deps.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.runtimeconfig.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.runtimeconfig.dev.json
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/KoronaZakupy.pdb
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/AutoMapper.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Data.SqlClient.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.SqlServer.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Stores.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.Identity.Client.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Runtime.Caching.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/sni.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/sni.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csproj.CoreCompileInputs.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.MvcApplicationPartsAssemblyInfo.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.AssemblyInfoInputs.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.AssemblyInfo.cs
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.RazorTargetAssemblyInfo.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csproj.CopyComplete
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/staticwebassets/KoronaZakupy.StaticWebAssets.Manifest.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/staticwebassets/KoronaZakupy.StaticWebAssets.xml
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.dll
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.pdb
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.genruntimeconfig.cache
-/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.exe
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.deps.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.runtimeconfig.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.runtimeconfig.dev.json
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\KoronaZakupy.pdb
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\staticwebassets\KoronaZakupy.StaticWebAssets.Manifest.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\staticwebassets\KoronaZakupy.StaticWebAssets.xml
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.AssemblyInfoInputs.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.AssemblyInfo.cs
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.RazorTargetAssemblyInfo.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.csproj.CopyComplete
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.pdb

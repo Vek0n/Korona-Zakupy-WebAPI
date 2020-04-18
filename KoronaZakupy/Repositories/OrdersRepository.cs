@@ -16,7 +16,7 @@ namespace KoronaZakupy.Repositories {
             _ordersDb = ordersDb;
         }
 
-        #region Refactoring
+       
 
         public async Task CreateAsync<T>(T resource, string userId ="") 
         {
@@ -28,20 +28,25 @@ namespace KoronaZakupy.Repositories {
 
         public async Task AddRelationAsync(long orderId, string userId)
         {
-            var user = await _ordersDb.Users.FirstOrDefaultAsync(user => user.UserId == userId);
-            var order = await _ordersDb.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
-            order.IsActive = false;
-
+            if (!await _ordersDb.Orders.AnyAsync())
+                orderId = 1;
+            else if (orderId == 0 || orderId == null)
+                orderId = await GetNewId();
+           
             var userOrder = new UserOrder()
             {
-                User = user,
-                Order = order,
+                UserId = userId,
+                OrderId = orderId,
                 IsOrderConfirmed = false
             };
 
             await _ordersDb.AddAsync(userOrder);
         }
 
+        private async Task<long> GetNewId()
+        {
+            return  (await _ordersDb.Orders.OrderByDescending(order => order.OrderId).FirstOrDefaultAsync()).OrderId + 1;
+        }
 
         public async Task UpdateAsync<T>(T resource)
         {
@@ -78,8 +83,7 @@ namespace KoronaZakupy.Repositories {
                  ).Users.SingleOrDefault(uo => uo.OrderId == orderId && uo.UserId == userId).IsOrderConfirmed;
         }
 
-        #endregion 
-
+         
         public async Task<Order> FindOrderByOrderIdAsync(long id) {
 
             return  await _ordersDb.Orders.Include(o=> o.Users).ThenInclude(row => row.User)

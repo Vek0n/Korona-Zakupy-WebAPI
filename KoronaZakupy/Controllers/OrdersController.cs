@@ -66,9 +66,27 @@ namespace KoronaZakupy.Controllers {
             //await repo.UpdateAsync(Order);
             //await unitOfWork.CompleteAsync();
 
-           //var xd = await repo.ChangeConfirmationOfOrderAsync(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-           // await repo.UpdateAsync(xd);
-           // await unitOfWork.CompleteAsync();
+            //var xd = await repo.ChangeConfirmationOfOrderAsync(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
+            // await repo.UpdateAsync(xd);
+            // await unitOfWork.CompleteAsync();
+
+            var Order = new Order()
+            {
+                OrderId = 0,
+                OrderDate = new System.DateTime(2020, 4, 17),
+                IsActive = false,
+                IsFinished = true,
+                Products = new string[]
+               {
+                    "Harnas",
+                    "Tatra",
+                    "Mydlo",
+                    "Cytryny"
+               },
+            };
+
+            await repo.CreateAsync(Order, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
+            await unitOfWork.CompleteAsync();
 
 
             return Ok();
