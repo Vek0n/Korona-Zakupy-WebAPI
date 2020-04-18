@@ -1,9 +1,23 @@
 ﻿<Properties StartupConfiguration="{1A03ED93-1CF9-437C-A1FA-5759CDF10D07}|Default">
   <MonoDevelop.Ide.ItemProperties.KoronaZakupy PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Services/UpdateOrder.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Properties/launchSettings.json">
     <Files>
-      <File FileName="KoronaZakupy/Controllers/OrdersController.cs" Line="65" Column="10" />
-      <File FileName="KoronaZakupy/Services/UpdateOrder.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Controllers/OrdersController.cs" Line="63" Column="1" />
+      <File FileName="KoronaZakupy/Services/UpdateOrder.cs" />
+      <File FileName="KoronaZakupy/Models/OrderModel.cs" />
+      <File FileName="KoronaZakupy/Services/OrderGetter.cs" />
+      <File FileName="KoronaZakupy/Repositories/OrdersRepository.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/OrderWithUsers.cs" Line="16" Column="2" />
+      <File FileName="KoronaZakupy/Services/CreateOrder.cs" />
+      <File FileName="KoronaZakupy/Services/UserGetter.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/User.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/UserOrder.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/Order.cs" />
+      <File FileName="KoronaZakupy/Controllers/UserController.cs" />
+      <File FileName="KoronaZakupy/Startup.cs" Line="90" Column="44" />
+      <File FileName="KoronaZakupy/Program.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/appsettings.json" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Properties/launchSettings.json" Line="18" Column="8" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,9 +25,16 @@
           <Node name="KoronaZakupy" expanded="True">
             <Node name="KoronaZakupy" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="UpdateOrder.cs" selected="True" />
+              <Node name="Entities" expanded="True">
+                <Node name="OrdersDB" expanded="True" />
+                <Node name="UserDB" expanded="True" />
               </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
+              </Node>
+              <Node name="Repositories" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>

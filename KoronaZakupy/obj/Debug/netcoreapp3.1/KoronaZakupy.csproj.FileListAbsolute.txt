@@ -130,3 +130,4 @@ C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.dll
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.pdb
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.genruntimeconfig.cache
+/Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csprojAssemblyReference.cache
