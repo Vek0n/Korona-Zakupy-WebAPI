@@ -27,7 +27,7 @@ namespace KoronaZakupy.Services {
 
             };
 
-            await _ordersRepository.CreateOrderAsync(order,model.UserId1);
+            await _ordersRepository.CreateAsync(order,model.UserId1);
             await _unitOfWork.CompleteAsync();
            
             return("OK");

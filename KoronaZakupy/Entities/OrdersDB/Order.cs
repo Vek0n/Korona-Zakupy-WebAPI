@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KoronaZakupy.Entities.OrdersDB
 {
-    public class Order
+    public class Order 
     {
         [Key]
         public long OrderId { get; set; }

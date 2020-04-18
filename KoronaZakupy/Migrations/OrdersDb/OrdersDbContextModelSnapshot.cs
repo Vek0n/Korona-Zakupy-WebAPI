@@ -4,16 +4,14 @@ using KoronaZakupy.Entities.OrdersDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KoronaZakupy.Migrations
+namespace KoronaZakupy.Migrations.OrdersDb
 {
     [DbContext(typeof(OrdersDbContext))]
-    [Migration("20200416153930_InitialCreate2")]
-    partial class InitialCreate2
+    partial class OrdersDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

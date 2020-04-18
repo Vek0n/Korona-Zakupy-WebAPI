@@ -15,7 +15,7 @@ namespace KoronaZakupy.Services {
        
         public async Task FinishOrder(long id)
         {
-            var order = await _ordersRepository.FindByIdAsync(id);
+            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
             order.IsFinished = true;
 
             await FinishUpdate(order);
@@ -24,7 +24,7 @@ namespace KoronaZakupy.Services {
 
         public async Task ChangeActiveProperty(long id)
         {
-            var order = await _ordersRepository.FindByIdAsync(id);
+            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
 
             if (order.IsActive)
                 order.IsActive = false;
@@ -34,30 +34,10 @@ namespace KoronaZakupy.Services {
             await FinishUpdate(order);
         }
 
-        public async Task ConfirmFinishedOrder(long id, string userId)
-        {
-
-            var userOrder = await _ordersRepository.ConfirmOrder(id, userId);
-           
-            await FinishUpdate(userOrder);
-
-        }
-
-        public async Task CancelConfirmationOfFinishedOrder(long id, string userId)
-        {
-            var userOrder = await _ordersRepository.CancelOfConfirmationOrder(id, userId);
-
-            await FinishUpdate(userOrder);
-
-        }
-
+      
         private async Task FinishUpdate<T>(T resource)
         {
-            if (resource is Order)
-                await _ordersRepository.UpdateOrderAsync(resource as Order);
-            if (resource is UserOrder)
-                await _ordersRepository.UpdateUserOrderAsync(resource as UserOrder);
-
+            await _ordersRepository.UpdateAsync(resource);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -65,7 +45,7 @@ namespace KoronaZakupy.Services {
         public async Task<bool> DidBothUsersConfirmedFinishedOrder(long id)
         {
 
-            var order = await _ordersRepository.FindByIdAsync(id);
+            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
             
             foreach( var userOrderRelation in order.Users)
             {
@@ -89,6 +69,11 @@ namespace KoronaZakupy.Services {
 
         }
 
+        public async Task ChangeConfirmationOfFinishedOrder(long id, string userId)
+        {
+            var userOrder = await _ordersRepository.ChangeConfirmationOfOrderAsync(id, userId);
 
+            await FinishUpdate(userOrder);
+        }
     }
 }

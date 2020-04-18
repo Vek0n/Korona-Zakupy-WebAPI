@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using KoronaZakupy.Models;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
-
+using KoronaZakupy.Entities;
 
 namespace KoronaZakupy.Services {
     public class UserLogin : IUserLogin{
@@ -17,8 +17,8 @@ namespace KoronaZakupy.Services {
         }
 
         public async Task<object> Login(LoginModel model,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Entities.UserDb.User> userManager,
+            SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration) {
 
             var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);

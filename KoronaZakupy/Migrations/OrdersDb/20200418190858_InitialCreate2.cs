@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KoronaZakupy.Migrations
+namespace KoronaZakupy.Migrations.OrdersDb
 {
     public partial class InitialCreate2 : Migration
     {

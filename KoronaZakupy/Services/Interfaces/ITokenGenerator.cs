@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using KoronaZakupy.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 
 namespace KoronaZakupy.Services.Interfaces {
     public interface ITokenGenerator {
 
-        Task<object> GenerateJwtToken(string email, IdentityUser user, IConfiguration configuration);
+        Task<object> GenerateJwtToken(string email, Entities.UserDb.User user, IConfiguration configuration);
 
     }
 }

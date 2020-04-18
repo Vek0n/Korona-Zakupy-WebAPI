@@ -28,17 +28,20 @@ namespace KoronaZakupy.Services {
 
         public async Task<object>Register(
             RegisterModel model,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Entities.UserDb.User> userManager,
+            SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration) {
 
-            // Copy data from RegisterModel to IdentityUser
-            var user = new IdentityUser {
+           
+            var user = new Entities.UserDb.User {
                 UserName = model.Email,
-                Email = model.Email
+                Email = model.Email,
+                Address = model.Address,
+                FirstName = model.FirstName,
+                LastName = model.LastName
             };
 
-            // Store user data in database table
+           
             var result = await userManager.CreateAsync(user, model.Password);
 
 
@@ -48,7 +51,7 @@ namespace KoronaZakupy.Services {
                 UserId = u
             };
 
-            await _ordersRepository.CreateUserAsync(userDB);
+            await _ordersRepository.CreateAsync(userDB);
             await _unitOfWork.CompleteAsync();
 
             //Sign in and generate token if register is succesful 

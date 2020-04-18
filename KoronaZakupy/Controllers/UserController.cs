@@ -6,6 +6,7 @@ using KoronaZakupy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
+using KoronaZakupy.Entities.UserDb;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,16 +19,16 @@ namespace KoronaZakupy.Controllers {
     [Produces("application/json")]
     public class UserController : ControllerBase {
 
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Entities.UserDb.User> _userManager;
+        private readonly SignInManager<Entities.UserDb.User> _signInManager;
         private readonly IConfiguration _configuration;
         private readonly IUserRegister _userRegister;
         private readonly IUserLogin _userLogin;
         private readonly IUserGetter _userGetter;
  
         public UserController(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Entities.UserDb.User> userManager,
+            SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration,
             IUserRegister userRegister,
             IUserLogin userLogin,
@@ -42,14 +43,14 @@ namespace KoronaZakupy.Controllers {
         }
 
         [HttpGet]
-        public IEnumerable<IdentityUser> Get() {
+        public IEnumerable<Entities.UserDb.User> Get() {
 
             return _userGetter.GetUsers(_userManager);
         }
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IdentityUser>> GetUser(string id) {
+        public async Task<ActionResult<Entities.UserDb.User>> GetUser(string id) {
 
             return await _userGetter.GetUser(id, _userManager);
 
