@@ -4,13 +4,16 @@ using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
 using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Services.Interfaces;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace KoronaZakupy.Services {
     public class UpdateOrder : BaseOrderService, IUpdateOrder {
-        public UpdateOrder(IOrdersRepository repo, IUnitOfWork unit) : base(repo, unit)
+
+        UserManager<Entities.UserDb.User> _userManager;
+        public UpdateOrder(IOrdersRepository repo, IUnitOfWork unit,
+            UserManager<Entities.UserDb.User> userManager) : base(repo, unit)
         {
-            
+            _userManager = userManager;
         }
        
         public async Task FinishOrder(long id)
@@ -65,9 +68,10 @@ namespace KoronaZakupy.Services {
         }
 
 
-        public async Task UnAcceptOrder(long id, string userId) {
+        public async Task UnAcceptOrder(long orderId, string userId) {
 
-            //REMEMBER: isActive = true;
+            await _ordersRepository.DeleteRelationAsync(orderId, userId);
+            await _unitOfWork.CompleteAsync();
 
         }
 

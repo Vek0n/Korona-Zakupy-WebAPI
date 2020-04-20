@@ -16,8 +16,6 @@ namespace KoronaZakupy.Repositories {
             _ordersDb = ordersDb;
         }
 
-       
-
         public async Task CreateAsync<T>(T resource, string userId ="") 
         {
                 await _ordersDb.AddAsync(resource);
@@ -46,6 +44,22 @@ namespace KoronaZakupy.Repositories {
         private async Task<long> GetNewId()
         {
             return  (await _ordersDb.Orders.OrderByDescending(order => order.OrderId).FirstOrDefaultAsync()).OrderId + 1;
+        }
+
+
+        public async Task DeleteRelationAsync(long orderId, string userId)
+        {
+            _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+            var removeUserOrder = new UserOrder()
+            {
+                UserId = userId,
+                OrderId = orderId,
+                IsOrderConfirmed = (await GetIsOrderConfirmed(orderId,userId))
+            };
+            _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
+
+            _ordersDb.Remove(removeUserOrder);
         }
 
         public async Task UpdateAsync<T>(T resource)

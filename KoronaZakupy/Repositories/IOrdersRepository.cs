@@ -10,6 +10,8 @@ namespace KoronaZakupy.Repositories
 
         Task AddRelationAsync(long orderId, string userId);
 
+        Task DeleteRelationAsync(long orderId, string userId);
+
         Task UpdateAsync<T>(T resource);
 
         Task<Order> FindOrderByOrderIdAsync(long id);
