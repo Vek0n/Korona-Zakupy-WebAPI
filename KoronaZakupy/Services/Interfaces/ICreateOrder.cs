@@ -7,7 +7,7 @@ namespace KoronaZakupy.Services.Interfaces {
     public interface ICreateOrder : IBaseOrder
     {
 
-        Task<object> PlaceOrder(OrderModel model);
+        Task<object> PlaceOrder(PlaceOrderModel model);
 
     }
 }

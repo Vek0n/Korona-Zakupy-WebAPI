@@ -8,12 +8,15 @@ using KoronaZakupy.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Services {
     public class OrderGetter : BaseOrderService, IOrderGetter {
 
         private ICompleteUserInfo _completeUserInfo;
-        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit, ICompleteUserInfo completeUserInfo) : base(repo, unit) {
+        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit,
+            ICompleteUserInfo completeUserInfo, IMapper mapper) : base(repo, unit, mapper) {
+
             _completeUserInfo = completeUserInfo;
         }
 

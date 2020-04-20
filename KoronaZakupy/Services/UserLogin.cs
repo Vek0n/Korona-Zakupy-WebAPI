@@ -6,13 +6,13 @@ using KoronaZakupy.Models;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Services {
     public class UserLogin : IUserLogin{
 
         private readonly ITokenGenerator _tokenGenerator;
-
-        public UserLogin(ITokenGenerator tokenGenerator) {
+        public UserLogin(ITokenGenerator tokenGenerator, IMapper mapper) {
             _tokenGenerator = tokenGenerator;
         }
 

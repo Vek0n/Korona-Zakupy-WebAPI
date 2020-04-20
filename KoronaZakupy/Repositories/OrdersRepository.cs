@@ -31,14 +31,7 @@ namespace KoronaZakupy.Repositories {
             else if (orderId == 0 || orderId == null)
                 orderId = await GetNewId();
            
-            var userOrder = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = false
-            };
-
-            await _ordersDb.AddAsync(userOrder);
+            await _ordersDb.AddAsync(new UserOrder(orderId,userId) );
         }
 
         private async Task<long> GetNewId()
@@ -50,16 +43,10 @@ namespace KoronaZakupy.Repositories {
         public async Task DeleteRelationAsync(long orderId, string userId)
         {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-
-            var removeUserOrder = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = (await GetIsOrderConfirmed(orderId,userId))
-            };
+            var isOrderConfirmed = (await GetIsOrderConfirmed(orderId, userId));
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
 
-            _ordersDb.Remove(removeUserOrder);
+            _ordersDb.Remove(new UserOrder(orderId,userId,isOrderConfirmed));
         }
 
         public async Task UpdateAsync<T>(T resource)
@@ -71,22 +58,17 @@ namespace KoronaZakupy.Repositories {
             }
             catch(Exception ex)
             {
-                var xe = ex.Message;
+                var exMessage = ex.Message;
             }
         }
 
         public async Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId)
         {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            var result = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = !(await GetIsOrderConfirmed(orderId, userId))
-            };
+            var isOrderConfirmed = !(await GetIsOrderConfirmed(orderId, userId));
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
 
-            return result;
+            return new UserOrder(orderId,userId,isOrderConfirmed);
         }
 
         private async Task<bool> GetIsOrderConfirmed(long orderId, string userId)

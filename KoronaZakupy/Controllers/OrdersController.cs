@@ -38,59 +38,29 @@ namespace KoronaZakupy.Controllers {
             this.unitOfWork = unitOfWork;
         }
 
-        ////// TODO: Tylko do testowania, na koniec usunąć
-        //[AllowAnonymous]
-        //[HttpGet("test")]
-        //public async Task<IActionResult> Test()
-        //{
-            // await _updateOrder.ConfirmFinishedOrder(4, "26c3f897-04e2-4347-84c2-185d8be381cb");
-            // await _updateOrder.ConfirmFinishedOrder(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-            // var result = await _updateOrder.DidBothUsersConfirmedFinishedOrder(4);
-
-            //var Order = new Order()
+        //// TODO: Tylko do testowania, na koniec usunąć
+        [AllowAnonymous]
+        [HttpGet("test")]
+        public async Task<IActionResult> Test()
+        {
+            
+            // PlaceOrderModel test = new PlaceOrderModel()
             //{
-            //    OrderId = 5,
-            //    OrderDate = new System.DateTime(2020, 4, 17),
-            //    IsActive = false,
-            //    IsFinished = true,
-            //    Products = new string[]
-            //    {
-            //        "Harnas",
-            //        "Tatra",
-            //        "Zubr",
-            //        "Cytryny"
-            //    },
+            //    UserId = "26c3f897-04e2-4347-84c2-190sdadad07",
+            //    OrderDate = new System.DateTime(2020, 4, 20),
+            //    Products = new List<string>
+            //       {
+            //                "Harnas",
+            //                "Tatra",
+            //                "Mydlo",
+            //                "Cytryny"
+            //       }
+
             //};
 
-            //////User user = new User() { UserId = "26c3f897-04e2-4347-84c2-190sdadad07" };
-            //await repo.UpdateAsync(Order);
-            //await unitOfWork.CompleteAsync();
-
-            //var xd = await repo.ChangeConfirmationOfOrderAsync(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-            // await repo.UpdateAsync(xd);
-            // await unitOfWork.CompleteAsync();
-
-        //    var Order = new Order()
-        //    {
-        //        OrderId = 0,
-        //        OrderDate = new System.DateTime(2020, 4, 17),
-        //        IsActive = false,
-        //        IsFinished = true,
-        //        Products = new string[]
-        //       {
-        //            "Harnas",
-        //            "Tatra",
-        //            "Mydlo",
-        //            "Cytryny"
-        //       },
-        //    };
-
-        //    await repo.CreateAsync(Order, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-        //    await unitOfWork.CompleteAsync();
-
-
-        //    return Ok();
-        //}
+          
+            return Ok();
+        }
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
@@ -119,7 +89,7 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpPost("add")]
-        public async Task<object> Add(OrderModel model) {
+        public async Task<object> Add( [FromBody] PlaceOrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
         }

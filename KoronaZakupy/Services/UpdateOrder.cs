@@ -5,13 +5,15 @@ using KoronaZakupy.UnitOfWork;
 using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using AutoMapper;
 
 namespace KoronaZakupy.Services {
     public class UpdateOrder : BaseOrderService, IUpdateOrder {
 
         UserManager<Entities.UserDb.User> _userManager;
         public UpdateOrder(IOrdersRepository repo, IUnitOfWork unit,
-            UserManager<Entities.UserDb.User> userManager) : base(repo, unit)
+            UserManager<Entities.UserDb.User> userManager,
+            IMapper mapper) : base(repo, unit, mapper)
         {
             _userManager = userManager;
         }

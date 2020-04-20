@@ -15,7 +15,7 @@ using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
-using Microsoft.EntityFrameworkCore.Design;
+using AutoMapper;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -67,6 +67,8 @@ namespace KoronaZakupy {
             services.AddScoped<IOrderGetter, OrderGetter>();
             services.AddScoped<IUpdateOrder, UpdateOrder>();
             services.AddScoped<ICompleteUserInfo, CompleteUserInfo>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddRazorPages();
         }
