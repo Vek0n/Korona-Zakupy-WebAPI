@@ -16,9 +16,9 @@ namespace KoronaZakupy.Repositories
 
         Task<Order> FindOrderByOrderIdAsync(long id);
 
-        Task<IEnumerable<OrderWithUsersId>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false);
+        Task<IEnumerable<OrderDTO>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false);
 
-        Task<IEnumerable<OrderWithUsersId>> FindActiveOrdersAsync();
+        Task<IEnumerable<OrderDTO>> FindActiveOrdersAsync();
 
         Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId);
     }

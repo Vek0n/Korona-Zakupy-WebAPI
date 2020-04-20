@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KoronaZakupy.Entities
 {
-    public class UserInfo
+    public class UserDTO
     {
         public string UserId { get; set; }
 

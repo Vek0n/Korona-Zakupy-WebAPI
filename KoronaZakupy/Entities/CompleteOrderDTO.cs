@@ -1,18 +1,18 @@
-﻿using KoronaZakupy.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KoronaZakupy.Models
+namespace KoronaZakupy.Entities
 {
-    public class OrderWithUserInfoModel
+    public class CompleteOrderDTO
     {
         public long OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public IEnumerable<string> Products { get; set; }
         public bool IsFinished { get; set; }
         public bool IsActive { get; set; }
-        public List<UserInfo> UsersInfo { get; set; }
+        public List<UserInfoDTO> UsersInfo { get; set; }
+
     }
 }

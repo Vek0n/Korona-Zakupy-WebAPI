@@ -8,6 +8,7 @@ using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Controllers {
 
@@ -21,6 +22,7 @@ namespace KoronaZakupy.Controllers {
         private readonly ICreateOrder _createOrder;
         private readonly IOrderGetter _orderGetter;
         private readonly IUpdateOrder _updateOrder;
+        private readonly IMapper _mapper;
 
         private readonly IOrdersRepository repo;
         private readonly IUnitOfWork unitOfWork;
@@ -29,61 +31,47 @@ namespace KoronaZakupy.Controllers {
             ICreateOrder createOrder,
             IOrderGetter orderGetter,
             IUpdateOrder updateOrder,
+            IMapper mapper,
             IOrdersRepository repo,
             IUnitOfWork unitOfWork) {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
             _updateOrder = updateOrder;
+            _mapper = mapper;
             this.repo = repo;
             this.unitOfWork = unitOfWork;
         }
 
-        //// TODO: Tylko do testowania, na koniec usunąć
-        [AllowAnonymous]
-        [HttpGet("test")]
-        public async Task<IActionResult> Test()
-        {
-            
-            // PlaceOrderModel test = new PlaceOrderModel()
-            //{
-            //    UserId = "26c3f897-04e2-4347-84c2-190sdadad07",
-            //    OrderDate = new System.DateTime(2020, 4, 20),
-            //    Products = new List<string>
-            //       {
-            //                "Harnas",
-            //                "Tatra",
-            //                "Mydlo",
-            //                "Cytryny"
-            //       }
-
-            //};
-
-          
-            return Ok();
-        }
+        ////// TODO: Tylko do testowania, na koniec usunąć
+        //[AllowAnonymous]
+        //[HttpGet("test")]
+        //public async Task<IActionResult> Test()
+        //{
+        //    return Ok();
+        //}
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetOrders(string id) {
+        public async Task<IEnumerable<OrderModel>> GetOrders(string id) {
 
-            return await _orderGetter.GetOrdersAsync(id);          
+            return  _mapper.Map<IEnumerable<OrderModel>>( await _orderGetter.GetOrdersAsync(id) );          
         }
 
 
         [AllowAnonymous]
         [HttpGet("active")]
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetActiveOrders()
+        public async Task<IEnumerable<OrderModel>> GetActiveOrders()
         {
 
-            return  await _orderGetter.GetActiveOrdersAsync();
+            return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetActiveOrdersAsync() );
         }
 
 
         [AllowAnonymous]
         [HttpGet("active/{id}")]
-        public async Task <IEnumerable<OrderWithUsersInfo>> GetUsersActiveOrders(string id) {
+        public async Task <IEnumerable<OrderModel>> GetUsersActiveOrders(string id) {
 
-            return await _orderGetter.GetUserActiveOrdersAsync(id);
+            return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetUserActiveOrdersAsync(id));
         }
 
 
@@ -105,7 +93,7 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpPost("accept/cancel/{id}/{userId}")]
-        public async Task UnAccept(long id, string userId) {
+        public async Task UnAccept(long id, string userId){
 
             await _updateOrder.UnAcceptOrder(id, userId);
         }
@@ -116,9 +104,7 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("finish/{id}")]
         public async Task CompleteOrder(long id) {
 
-            await _updateOrder.FinishOrder(id);
-            // TODO
-            // IUpdateOrderResponsea
+            await _updateOrder.FinishOrder(id);   
         }
 
         [AllowAnonymous]

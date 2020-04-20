@@ -7,6 +7,10 @@ namespace KoronaZakupy.Entities.OrdersDB
 {
     public class UserOrder
     {
+        public UserOrder()
+        {
+
+        }
 
         public UserOrder(long id, string userId, bool isOrderConfirmed = false)
         {
