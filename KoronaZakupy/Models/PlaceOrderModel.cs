@@ -7,10 +7,6 @@ namespace KoronaZakupy.Models {
 
         [Required]
         public string UserId { get; set; }
-
-        [Required]
-        public DateTime OrderDate { get; set; }
-
         [Required]
         public List<string> Products { get; set; }
 
