@@ -23,5 +23,17 @@ namespace KoronaZakupy.Services {
             }
             return user;
         }
+
+
+        public async Task<IList<string>> GetRole(string id, UserManager<Entities.UserDb.User> userManager) {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null) {
+                throw new ApplicationException("User Not Found");
+            }
+
+            return (await userManager.GetRolesAsync(user));
+        }
+
     }
 }

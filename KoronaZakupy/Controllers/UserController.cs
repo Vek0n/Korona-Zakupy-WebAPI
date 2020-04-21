@@ -22,7 +22,6 @@ namespace KoronaZakupy.Controllers {
 
         private readonly UserManager<Entities.UserDb.User> _userManager;
         private readonly SignInManager<Entities.UserDb.User> _signInManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IUserRegister _userRegister;
         private readonly IUserLogin _userLogin;
@@ -59,6 +58,13 @@ namespace KoronaZakupy.Controllers {
         public async Task<ActionResult<Entities.UserDb.User>> GetUser(string id) {
 
             return await _userGetter.GetUser(id, _userManager);
+
+        }
+
+        [HttpGet("role/{id}")]
+        public async Task<IList<string>> GetRole(string id) {
+
+            return await _userGetter.GetRole(id, _userManager);
 
         }
 

@@ -10,6 +10,6 @@ namespace KoronaZakupy.Services.Interfaces {
         public IEnumerable<Entities.UserDb.User> GetUsers(UserManager<Entities.UserDb.User> userManager);
 
         Task<ActionResult<Entities.UserDb.User>> GetUser(string id, UserManager<Entities.UserDb.User> userManager);
-
+        Task<IList<string>> GetRole(string id,UserManager<Entities.UserDb.User> userManager);
     }
 }

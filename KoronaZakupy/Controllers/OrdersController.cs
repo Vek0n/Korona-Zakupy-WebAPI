@@ -10,6 +10,7 @@ using KoronaZakupy.UnitOfWork;
 using KoronaZakupy.Entities;
 using AutoMapper;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace KoronaZakupy.Controllers {
 
@@ -44,27 +45,27 @@ namespace KoronaZakupy.Controllers {
         }
 
         // TODO: Tylko do testowania, na koniec usunąć
-        [AllowAnonymous]
-        [HttpGet("test")]
-        public async Task<IActionResult> Test()
-        {
+        //[AllowAnonymous]
+        //[HttpGet("test")]
+        //public async Task<IActionResult> Test()
+        //{
 
-            var test = new PlaceOrderModel()
-            {
-                Products = new List<string>
-                {
-                    "Jajka",
-                    "Harnaś",
-                    "Wojak",
-                    "4xKustosz"
-                },
-                UserId = "26c3f897-04e2-4347-84c2-185d8be381cb"
-            };
+        //    var test = new PlaceOrderModel()
+        //    {
+        //        Products = new List<string>
+        //        {
+        //            "Jajka",
+        //            "Harnaś",
+        //            "Wojak",
+        //            "4xKustosz"
+        //        },
+        //        UserId = "26c3f897-04e2-4347-84c2-185d8be381cb"
+        //    };
 
-            await _createOrder.PlaceOrder(test);
+        //    await _createOrder.PlaceOrder(test);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
@@ -78,7 +79,6 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("active")]
         public async Task<IEnumerable<OrderModel>> GetActiveOrders()
         {
-
             return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetActiveOrdersAsync() );
         }
 
