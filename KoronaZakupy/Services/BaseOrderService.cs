@@ -1,4 +1,5 @@
-﻿using KoronaZakupy.Repositories;
+﻿using AutoMapper;
+using KoronaZakupy.Repositories;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.UnitOfWork;
 using System;
@@ -12,11 +13,13 @@ namespace KoronaZakupy.Services
     {
         protected readonly IOrdersRepository _ordersRepository;
         protected readonly IUnitOfWork _unitOfWork;
+        protected readonly IMapper _mapper;
 
-        public BaseOrderService(IOrdersRepository ordersRepository, IUnitOfWork unitOfWork)
+        public BaseOrderService(IOrdersRepository ordersRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _ordersRepository = ordersRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
     }
 }

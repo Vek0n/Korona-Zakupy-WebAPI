@@ -8,28 +8,31 @@ using KoronaZakupy.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Services {
     public class OrderGetter : BaseOrderService, IOrderGetter {
 
         private ICompleteUserInfo _completeUserInfo;
-        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit, ICompleteUserInfo completeUserInfo) : base(repo, unit) {
+        public OrderGetter(IOrdersRepository repo, IUnitOfWork unit,
+            ICompleteUserInfo completeUserInfo, IMapper mapper) : base(repo, unit, mapper) {
+
             _completeUserInfo = completeUserInfo;
         }
 
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetActiveOrdersAsync()
+        public async Task<IEnumerable<CompleteOrderDTO>> GetActiveOrdersAsync()
         {
 
             return await  _completeUserInfo.CompleteAsync( await _ordersRepository.FindActiveOrdersAsync() );
         }
 
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetOrdersAsync(string userId) {
+        public async Task<IEnumerable<CompleteOrderDTO>> GetOrdersAsync(string userId) {
 
             return await _completeUserInfo.CompleteAsync( await _ordersRepository.FindOrdersByUserIdAsync(userId) );
         }
 
 
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetUserActiveOrdersAsync(string userId) {
+        public async Task<IEnumerable<CompleteOrderDTO>> GetUserActiveOrdersAsync(string userId) {
 
             return await _completeUserInfo.CompleteAsync(await _ordersRepository.FindOrdersByUserIdAsync(userId,true));
         }

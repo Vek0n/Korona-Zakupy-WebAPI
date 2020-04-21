@@ -8,9 +8,9 @@ using KoronaZakupy.Entities;
 namespace KoronaZakupy.Services.Interfaces {
     public interface IOrderGetter : IBaseOrder {
 
-        public Task<IEnumerable<OrderWithUsersInfo>> GetOrdersAsync(string userId);
-        public Task<IEnumerable<OrderWithUsersInfo>> GetUserActiveOrdersAsync(string userId);
+        public Task<IEnumerable<CompleteOrderDTO>> GetOrdersAsync(string userId);
+        public Task<IEnumerable<CompleteOrderDTO>> GetUserActiveOrdersAsync(string userId);
 
-        public Task<IEnumerable<OrderWithUsersInfo>> GetActiveOrdersAsync();
+        public Task<IEnumerable<CompleteOrderDTO>> GetActiveOrdersAsync();
     }
 }

@@ -1,0 +1,2 @@
+﻿INSERT INTO AspNetUsers(Id, UserName, NormalizedUserName, Email,NormalizedEmail,PasswordHash,Address,FirstName,LastName,PhotoDirectory,Rating,EmailConfirmed,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnabled,AccessFailedCount)
+VALUES ('4d701916-87aa-4b8c-9c76-b2935c52e87f', 'SinsuxD', 'SINSUXD','xd@o2.pl','XD@O2.PL','dadadad1341313314314','Polna13','Jan','Jaki','dir',10.22,1,0,0,1,22); 

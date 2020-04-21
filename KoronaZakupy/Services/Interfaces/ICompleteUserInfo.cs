@@ -9,6 +9,6 @@ namespace KoronaZakupy.Services.Interfaces
 {
    public interface ICompleteUserInfo
     {
-        public Task<IEnumerable<OrderWithUsersInfo>> CompleteAsync(IEnumerable<OrderWithUsersId> order);
+        public Task<IEnumerable<CompleteOrderDTO>> CompleteAsync(IEnumerable<OrderDTO> order);
     }
 }

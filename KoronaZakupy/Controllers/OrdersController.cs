@@ -8,6 +8,7 @@ using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Controllers {
 
@@ -21,6 +22,7 @@ namespace KoronaZakupy.Controllers {
         private readonly ICreateOrder _createOrder;
         private readonly IOrderGetter _orderGetter;
         private readonly IUpdateOrder _updateOrder;
+        private readonly IMapper _mapper;
 
         private readonly IOrdersRepository repo;
         private readonly IUnitOfWork unitOfWork;
@@ -29,11 +31,13 @@ namespace KoronaZakupy.Controllers {
             ICreateOrder createOrder,
             IOrderGetter orderGetter,
             IUpdateOrder updateOrder,
+            IMapper mapper,
             IOrdersRepository repo,
             IUnitOfWork unitOfWork) {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
             _updateOrder = updateOrder;
+            _mapper = mapper;
             this.repo = repo;
             this.unitOfWork = unitOfWork;
         }
@@ -43,83 +47,37 @@ namespace KoronaZakupy.Controllers {
         //[HttpGet("test")]
         //public async Task<IActionResult> Test()
         //{
-            // await _updateOrder.ConfirmFinishedOrder(4, "26c3f897-04e2-4347-84c2-185d8be381cb");
-            // await _updateOrder.ConfirmFinishedOrder(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-            // var result = await _updateOrder.DidBothUsersConfirmedFinishedOrder(4);
-
-            //var Order = new Order()
-            //{
-            //    OrderId = 5,
-            //    OrderDate = new System.DateTime(2020, 4, 17),
-            //    IsActive = false,
-            //    IsFinished = true,
-            //    Products = new string[]
-            //    {
-            //        "Harnas",
-            //        "Tatra",
-            //        "Zubr",
-            //        "Cytryny"
-            //    },
-            //};
-
-            //////User user = new User() { UserId = "26c3f897-04e2-4347-84c2-190sdadad07" };
-            //await repo.UpdateAsync(Order);
-            //await unitOfWork.CompleteAsync();
-
-            //var xd = await repo.ChangeConfirmationOfOrderAsync(4, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-            // await repo.UpdateAsync(xd);
-            // await unitOfWork.CompleteAsync();
-
-        //    var Order = new Order()
-        //    {
-        //        OrderId = 0,
-        //        OrderDate = new System.DateTime(2020, 4, 17),
-        //        IsActive = false,
-        //        IsFinished = true,
-        //        Products = new string[]
-        //       {
-        //            "Harnas",
-        //            "Tatra",
-        //            "Mydlo",
-        //            "Cytryny"
-        //       },
-        //    };
-
-        //    await repo.CreateAsync(Order, "4d701916-87aa-4b8c-9c76-b2935c52e87f");
-        //    await unitOfWork.CompleteAsync();
-
-
         //    return Ok();
         //}
 
         [AllowAnonymous]
         [HttpGet("all/{id}")]
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetOrders(string id) {
+        public async Task<IEnumerable<OrderModel>> GetOrders(string id) {
 
-            return await _orderGetter.GetOrdersAsync(id);          
+            return  _mapper.Map<IEnumerable<OrderModel>>( await _orderGetter.GetOrdersAsync(id) );          
         }
 
 
         [AllowAnonymous]
         [HttpGet("active")]
-        public async Task<IEnumerable<OrderWithUsersInfo>> GetActiveOrders()
+        public async Task<IEnumerable<OrderModel>> GetActiveOrders()
         {
 
-            return  await _orderGetter.GetActiveOrdersAsync();
+            return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetActiveOrdersAsync() );
         }
 
 
         [AllowAnonymous]
         [HttpGet("active/{id}")]
-        public async Task <IEnumerable<OrderWithUsersInfo>> GetUsersActiveOrders(string id) {
+        public async Task <IEnumerable<OrderModel>> GetUsersActiveOrders(string id) {
 
-            return await _orderGetter.GetUserActiveOrdersAsync(id);
+            return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetUserActiveOrdersAsync(id));
         }
 
 
         [AllowAnonymous]
         [HttpPost("add")]
-        public async Task<object> Add(OrderModel model) {
+        public async Task<object> Add( [FromBody] PlaceOrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
         }
@@ -135,7 +93,7 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpPost("accept/cancel/{id}/{userId}")]
-        public async Task UnAccept(long id, string userId) {
+        public async Task UnAccept(long id, string userId){
 
             await _updateOrder.UnAcceptOrder(id, userId);
         }
@@ -146,9 +104,7 @@ namespace KoronaZakupy.Controllers {
         [HttpGet("finish/{id}")]
         public async Task CompleteOrder(long id) {
 
-            await _updateOrder.FinishOrder(id);
-            // TODO
-            // IUpdateOrderResponsea
+            await _updateOrder.FinishOrder(id);   
         }
 
         [AllowAnonymous]

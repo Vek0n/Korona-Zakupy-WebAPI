@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using KoronaZakupy.Services.Interfaces;
 using KoronaZakupy.Entities.UserDb;
+using AutoMapper;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -25,6 +26,7 @@ namespace KoronaZakupy.Controllers {
         private readonly IUserRegister _userRegister;
         private readonly IUserLogin _userLogin;
         private readonly IUserGetter _userGetter;
+        private readonly IMapper _mapper;
  
         public UserController(
             UserManager<Entities.UserDb.User> userManager,
@@ -32,7 +34,8 @@ namespace KoronaZakupy.Controllers {
             IConfiguration configuration,
             IUserRegister userRegister,
             IUserLogin userLogin,
-            IUserGetter userGetter) {
+            IUserGetter userGetter,
+            IMapper mapper) {
 
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,6 +43,7 @@ namespace KoronaZakupy.Controllers {
             _userRegister = userRegister;
             _userLogin = userLogin;
             _userGetter = userGetter;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -61,6 +65,11 @@ namespace KoronaZakupy.Controllers {
         [HttpPost("register")]
         public async Task<object> Register([FromBody] RegisterModel model) {
 
+            if (!ModelState.IsValid)
+            {
+                return null; // BadRequest ???
+            }
+
             return await _userRegister.Register(model, _userManager, _signInManager, _configuration);
 
         }
@@ -69,6 +78,11 @@ namespace KoronaZakupy.Controllers {
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<object> Login([FromBody] LoginModel model) {
+
+            if (!ModelState.IsValid)
+            {
+                return null; // BadRequest ???
+            }
 
             return await _userLogin.Login(model, _userManager, _signInManager, _configuration);
         }

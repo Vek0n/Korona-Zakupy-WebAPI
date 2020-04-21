@@ -6,14 +6,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using KoronaZakupy.Entities;
+using AutoMapper;
 
 namespace KoronaZakupy.Repositories {
     public class OrdersRepository : IOrdersRepository{
 
         private readonly OrdersDbContext _ordersDb;
+        private readonly IMapper _mapper;
 
-        public OrdersRepository(OrdersDbContext ordersDb) {
+        public OrdersRepository(OrdersDbContext ordersDb, IMapper mapper) {
             _ordersDb = ordersDb;
+            _mapper = mapper;
         }
 
         public async Task CreateAsync<T>(T resource, string userId ="") 
@@ -31,14 +34,7 @@ namespace KoronaZakupy.Repositories {
             else if (orderId == 0 || orderId == null)
                 orderId = await GetNewId();
            
-            var userOrder = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = false
-            };
-
-            await _ordersDb.AddAsync(userOrder);
+            await _ordersDb.AddAsync(new UserOrder(orderId,userId) );
         }
 
         private async Task<long> GetNewId()
@@ -50,16 +46,10 @@ namespace KoronaZakupy.Repositories {
         public async Task DeleteRelationAsync(long orderId, string userId)
         {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-
-            var removeUserOrder = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = (await GetIsOrderConfirmed(orderId,userId))
-            };
+            var isOrderConfirmed = (await GetIsOrderConfirmed(orderId, userId));
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
 
-            _ordersDb.Remove(removeUserOrder);
+            _ordersDb.Remove(new UserOrder(orderId,userId,isOrderConfirmed));
         }
 
         public async Task UpdateAsync<T>(T resource)
@@ -71,22 +61,17 @@ namespace KoronaZakupy.Repositories {
             }
             catch(Exception ex)
             {
-                var xe = ex.Message;
+                var exMessage = ex.Message;
             }
         }
 
         public async Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId)
         {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            var result = new UserOrder()
-            {
-                UserId = userId,
-                OrderId = orderId,
-                IsOrderConfirmed = !(await GetIsOrderConfirmed(orderId, userId))
-            };
+            var isOrderConfirmed = !(await GetIsOrderConfirmed(orderId, userId));
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
 
-            return result;
+            return new UserOrder(orderId,userId,isOrderConfirmed);
         }
 
         private async Task<bool> GetIsOrderConfirmed(long orderId, string userId)
@@ -105,52 +90,40 @@ namespace KoronaZakupy.Repositories {
         }
 
 
-        public async Task<IEnumerable<OrderWithUsersId>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false)
+        public async Task<IEnumerable<OrderDTO>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false)
         {
             var rawResult = await FindByUserIdRawAsync(userId, findByActivity);
 
-            var result = rawResult.Select(order => new OrderWithUsersId()
-            {
-                OrderId = order.OrderId,
-                OrderDate = order.OrderDate,
-                Products = order.Products,
-                IsFinished = order.IsFinished,
-                IsActive = order.IsActive,
-                UsersId = order.Users.Select(u => u.UserId).ToList()
-            });
-
-            return result;
+            return rawResult.Select(order => _mapper.Map<OrderDTO>(order) );
         }
 
         private async Task<IEnumerable<Order>> FindByUserIdRawAsync(string userId, bool findByActivity = false)
         {
-            if (!findByActivity) {
-                return ( _ordersDb.Orders.Include(order => order.Users)
-               .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId)) ).AsEnumerable();
+            try
+            {
+                if (!findByActivity)
+                {
+                    return (_ordersDb.Orders.Include(order => order.Users)
+                   .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))).AsEnumerable();
+                }
+
+                return (_ordersDb.Orders.Include(order => order.Users)
+               .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
+               .Where(x => x.IsActive == true)).AsEnumerable();
             }
-
-            return ( _ordersDb.Orders.Include(order => order.Users)
-           .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
-           .Where(x => x.IsActive == true) ).AsEnumerable();
-
+            catch(Exception ex)
+            {
+                var exMess = ex.Message;
+                return null;
+            }
         
         }
 
-        public async Task<IEnumerable<OrderWithUsersId>> FindActiveOrdersAsync()
+        public async Task<IEnumerable<OrderDTO>> FindActiveOrdersAsync()
         {
             var rawResult = await FindActiveOrdersRawAsync();
 
-            var result = rawResult.Select(order => new OrderWithUsersId()
-            {
-                OrderId = order.OrderId,
-                OrderDate = order.OrderDate,
-                IsFinished = order.IsFinished,
-                IsActive = order.IsActive,
-                UsersId = order.Users.Select(u => u.UserId).ToList()
-              
-            });
-
-            return result;
+            return rawResult.Select(order => _mapper.Map<OrderDTO>(order));
         }
 
         private async Task<IEnumerable<Order>> FindActiveOrdersRawAsync()

@@ -7,6 +7,18 @@ namespace KoronaZakupy.Entities.OrdersDB
 {
     public class UserOrder
     {
+        public UserOrder()
+        {
+
+        }
+
+        public UserOrder(long id, string userId, bool isOrderConfirmed = false)
+        {
+            UserId = userId;
+            OrderId = id;
+            IsOrderConfirmed = isOrderConfirmed;
+        }
+
         public string UserId { get; set; }
         public OrdersDB.User User { get; set; }
 
