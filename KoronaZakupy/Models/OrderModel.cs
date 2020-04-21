@@ -13,6 +13,6 @@ namespace KoronaZakupy.Models
         public IEnumerable<string> Products { get; set; }
         public bool IsFinished { get; set; }
         public bool IsActive { get; set; }
-        public List<UserInfoDTO> UsersInfo { get; set; }
+        public List<UserDTO> UsersInfo { get; set; }
     }
 }

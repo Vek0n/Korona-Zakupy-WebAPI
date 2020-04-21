@@ -9,7 +9,10 @@ namespace KoronaZakupy.Profiles
         public UserProfile()
         {
             CreateMap<RegisterModel, Entities.UserDb.User>();
-            CreateMap<Entities.UserDb.User, UserDTO>();
+            CreateMap<Entities.UserDb.User, UserDTO>()
+                .ForMember(dest => dest.UserId,
+                opt => opt.MapFrom(src => src.Id));
+            ;
         }
             
 
