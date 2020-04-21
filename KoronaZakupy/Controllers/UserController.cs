@@ -22,12 +22,13 @@ namespace KoronaZakupy.Controllers {
 
         private readonly UserManager<Entities.UserDb.User> _userManager;
         private readonly SignInManager<Entities.UserDb.User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IUserRegister _userRegister;
         private readonly IUserLogin _userLogin;
         private readonly IUserGetter _userGetter;
         private readonly IMapper _mapper;
- 
+
         public UserController(
             UserManager<Entities.UserDb.User> userManager,
             SignInManager<Entities.UserDb.User> signInManager,
@@ -46,8 +47,9 @@ namespace KoronaZakupy.Controllers {
             _mapper = mapper;
         }
 
+      
         [HttpGet]
-        public IEnumerable<Entities.UserDb.User> Get() {
+        public async Task<IEnumerable<Entities.UserDb.User>> Get() {
 
             return _userGetter.GetUsers(_userManager);
         }

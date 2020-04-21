@@ -50,7 +50,7 @@ namespace KoronaZakupy.Services {
                 await _ordersRepository.CreateAsync(userDB);
                 await _unitOfWork.CompleteAsync();
 
-
+                await userManager.AddToRoleAsync(user, validModel.RoleName);
                 await signInManager.SignInAsync(user, false);
                 return await _tokenGenerator.GenerateJwtToken(validModel.Email, user, configuration);
             }

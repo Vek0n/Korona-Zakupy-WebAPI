@@ -36,7 +36,7 @@ namespace KoronaZakupy {
             services.AddDbContext<OrdersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OrdersDatabase")));
 
             services.AddIdentity<Entities.UserDb.User, IdentityRole>().AddEntityFrameworkStores<Entities.UserDb.UsersDbContext>();
-
+           
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services

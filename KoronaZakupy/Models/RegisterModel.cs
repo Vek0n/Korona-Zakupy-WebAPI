@@ -4,6 +4,9 @@ namespace KoronaZakupy.Models {
     public class RegisterModel {
 
         [Required]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -16,11 +19,17 @@ namespace KoronaZakupy.Models {
             ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
+
+        [Required]
+        public string RoleName { get; set; }
 
     }
 }
