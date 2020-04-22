@@ -1,37 +1,41 @@
 ﻿<Properties StartupConfiguration="{1A03ED93-1CF9-437C-A1FA-5759CDF10D07}|Default">
   <MonoDevelop.Ide.ItemProperties.KoronaZakupy PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Services/UserLogin.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoronaZakupy/Services/TokenGenerator.cs">
     <Files>
       <File FileName="KoronaZakupy/Controllers/OrdersController.cs" Line="79" Column="28" />
-      <File FileName="KoronaZakupy/Models/OrderModel.cs" Line="19" Column="1" />
-      <File FileName="KoronaZakupy/Entities/OrdersDB/Order.cs" Line="22" Column="32" />
-      <File FileName="KoronaZakupy/Entities/OrdersDB/UserOrder.cs" Line="32" Column="1" />
-      <File FileName="KoronaZakupy/appsettings.json" Line="17" Column="2" />
+      <File FileName="KoronaZakupy/Models/OrderModel.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/Order.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/UserOrder.cs" />
+      <File FileName="KoronaZakupy/appsettings.json" />
       <File FileName="KoronaZakupy/Services/UpdateOrder.cs" />
-      <File FileName="KoronaZakupy/Repositories/OrdersRepository.cs" Line="89" Column="53" />
-      <File FileName="KoronaZakupy/Services/OrderGetter.cs" />
-      <File FileName="KoronaZakupy/Controllers/UserController.cs" Line="47" Column="10" />
+      <File FileName="KoronaZakupy/Services/UserRegister.cs" Line="57" Column="56" />
+      <File FileName="KoronaZakupy/Repositories/OrdersRepository.cs" />
+      <File FileName="KoronaZakupy/Services/OrderGetter.cs" Line="23" Column="47" />
+      <File FileName="KoronaZakupy/Controllers/UserController.cs" />
       <File FileName="KoronaZakupy/Models/RegisterModel.cs" Line="36" Column="1" />
       <File FileName="KoronaZakupy/Models/UserModel.cs" />
-      <File FileName="KoronaZakupy/Models/LoginModel.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserRegister.cs" Line="65" Column="1" />
-      <File FileName="KoronaZakupy/Services/TokenGenerator.cs" />
-      <File FileName="KoronaZakupy/Entities/UserInfo.cs" />
-      <File FileName="KoronaZakupy/Entities/OrdersDB/OrdersDbContext.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Entities/OrdersDB/User.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Entities/CompleteOrderDTO.cs" Line="19" Column="1" />
-      <File FileName="KoronaZakupy/Entities/OrderDTO.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Entities/UserDTO.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Startup.cs" Line="98" Column="1" />
-      <File FileName="KoronaZakupy/Entities/UserDB/UsersDbContext.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Communication/CreateOrderResponse.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Communication/UpdateOrderResponse.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Models/PlaceOrderModel.cs" Line="15" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserGetter.cs" Line="30" Column="1" />
-      <File FileName="KoronaZakupy/Repositories/IOrdersRepository.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/Interfaces/IUserGetter.cs" Line="16" Column="1" />
-      <File FileName="KoronaZakupy/Program.cs" Line="1" Column="1" />
-      <File FileName="KoronaZakupy/Services/UserLogin.cs" Line="18" Column="1" />
+      <File FileName="KoronaZakupy/Models/LoginModel.cs" />
+      <File FileName="KoronaZakupy/Services/TokenGenerator.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/OrdersDbContext.cs" />
+      <File FileName="KoronaZakupy/Entities/OrdersDB/User.cs" />
+      <File FileName="KoronaZakupy/Entities/CompleteOrderDTO.cs" />
+      <File FileName="KoronaZakupy/Entities/OrderDTO.cs" />
+      <File FileName="KoronaZakupy/Entities/UserDTO.cs" />
+      <File FileName="KoronaZakupy/Startup.cs" />
+      <File FileName="KoronaZakupy/Entities/UserDB/UsersDbContext.cs" />
+      <File FileName="KoronaZakupy/Communication/CreateOrderResponse.cs" />
+      <File FileName="KoronaZakupy/Communication/UpdateOrderResponse.cs" />
+      <File FileName="KoronaZakupy/Models/PlaceOrderModel.cs" />
+      <File FileName="KoronaZakupy/Services/UserGetter.cs" Line="32" Column="66" />
+      <File FileName="KoronaZakupy/Repositories/IOrdersRepository.cs" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserGetter.cs" />
+      <File FileName="KoronaZakupy/Program.cs" />
+      <File FileName="KoronaZakupy/Services/UserLogin.cs" />
+      <File FileName="KoronaZakupy/Models/RegisterResponseModel.cs" Line="9" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/ICompleteUserInfo.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/CompleteUserInfo.cs" Line="1" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/IUserRegister.cs" Line="16" Column="1" />
+      <File FileName="KoronaZakupy/Services/Interfaces/ITokenGenerator.cs" Line="9" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -48,7 +52,7 @@
               <Node name="Repositories" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Interfaces" expanded="True" />
-                <Node name="UserLogin.cs" selected="True" />
+                <Node name="TokenGenerator.cs" selected="True" />
               </Node>
             </Node>
           </Node>

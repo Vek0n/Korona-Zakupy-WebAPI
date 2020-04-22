@@ -29,11 +29,12 @@ namespace KoronaZakupy.Services {
         }
 
 
-        public async Task<object>Register(
+        public async Task<RegisterResponseModel>Register(
             RegisterModel validModel,
             UserManager<Entities.UserDb.User> userManager,
             SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration) {
+
 
             var user = _mapper.Map<Entities.UserDb.User>(validModel);
 
@@ -52,11 +53,16 @@ namespace KoronaZakupy.Services {
 
                 await userManager.AddToRoleAsync(user, validModel.RoleName);
                 await signInManager.SignInAsync(user, false);
-                return await _tokenGenerator.GenerateJwtToken(validModel.Email, user, configuration);
+
+                var token = await _tokenGenerator.GenerateJwtToken(validModel.Email, user, configuration);
+
+                RegisterResponseModel model = new RegisterResponseModel {
+                    UserId = userId,
+                    Token = token
+                };
+
+                return model;
             }
-
-            
-
             throw new ApplicationException("UNKNOWN_ERROR");
         }
 

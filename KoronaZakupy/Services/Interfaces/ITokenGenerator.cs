@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 namespace KoronaZakupy.Services.Interfaces {
     public interface ITokenGenerator {
 
-        Task<object> GenerateJwtToken(string email, Entities.UserDb.User user, IConfiguration configuration);
+        Task<string> GenerateJwtToken(string email, Entities.UserDb.User user, IConfiguration configuration);
 
     }
 }

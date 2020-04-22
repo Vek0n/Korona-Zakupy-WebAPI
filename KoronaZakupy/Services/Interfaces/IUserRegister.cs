@@ -7,7 +7,7 @@ using KoronaZakupy.Entities;
 namespace KoronaZakupy.Services.Interfaces {
     public interface IUserRegister {
 
-        Task<object> Register(RegisterModel validModel,
+        Task<RegisterResponseModel> Register(RegisterModel validModel,
             UserManager<Entities.UserDb.User> userManager,
             SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration);
