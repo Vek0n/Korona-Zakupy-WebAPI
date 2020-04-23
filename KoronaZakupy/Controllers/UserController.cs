@@ -46,7 +46,7 @@ namespace KoronaZakupy.Controllers {
             _mapper = mapper;
         }
 
-      
+
         [HttpGet]
         public async Task<IEnumerable<Entities.UserDb.User>> Get() {
 
@@ -93,6 +93,13 @@ namespace KoronaZakupy.Controllers {
             }
 
             return await _userLogin.Login(model, _userManager, _signInManager, _configuration);
+        }
+
+        [HttpGet("check/token/{id}")]
+        public async Task<IActionResult> CheckToken(string id)
+        {
+            //TODO: elegant implementattion
+            return Ok();
         }
     }
 }
