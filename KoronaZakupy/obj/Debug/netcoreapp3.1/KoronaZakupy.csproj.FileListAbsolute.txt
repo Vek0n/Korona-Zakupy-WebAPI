@@ -131,3 +131,11 @@ C:/Users/Marcin/Desktop/STUDIA/SEMESTR 6/Aplikacje Mobilne/Projekt/Korona-Zakupy
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.pdb
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.genruntimeconfig.cache
 /Users/szymonkaczmarek/Projects/KoronaZakupy/KoronaZakupy/obj/Debug/netcoreapp3.1/KoronaZakupy.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\staticwebassets\KoronaZakupy.StaticWebAssets.Manifest.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\staticwebassets\KoronaZakupy.StaticWebAssets.xml
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.AssemblyInfoInputs.cache
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.AssemblyInfo.cs
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.dll
+C:\Users\Marcin\Desktop\STUDIA\SEMESTR 6\Aplikacje Mobilne\Projekt\Korona-Zakupy-WebAPI\KoronaZakupy\obj\Debug\netcoreapp3.1\KoronaZakupy.pdb

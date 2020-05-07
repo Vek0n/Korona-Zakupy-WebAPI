@@ -30,6 +30,9 @@ namespace KoronaZakupy.Helpers
             var httpCode = HttpStatusCode.InternalServerError;
             var message = "Internal Server Error";
 
+            if (ex is ApplicationException)
+                message = ex.Message;
+
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)httpCode;
 

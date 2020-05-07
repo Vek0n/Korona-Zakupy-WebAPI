@@ -16,6 +16,7 @@ using KoronaZakupy.Entities.OrdersDB;
 using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
 using AutoMapper;
+using KoronaZakupy.Helpers;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -79,7 +80,7 @@ namespace KoronaZakupy {
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseRouting();
 

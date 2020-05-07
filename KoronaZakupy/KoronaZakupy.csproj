@@ -33,8 +33,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Communication\" />
-    <Folder Include="Communication\Interfaces\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>
