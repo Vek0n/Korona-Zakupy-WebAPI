@@ -14,7 +14,9 @@ namespace KoronaZakupy.Profiles
         {
             CreateMap<PlaceOrderModel, Order>()
                 .ForMember(dest => dest.OrderDate,
-                opt => opt.MapFrom(src => DateTime.Now) );
+                opt => opt.MapFrom(src => DateTime.Now) )
+                .ForMember(dest => dest.IsActive,
+                opt => opt.MapFrom(src => true));
                      
             CreateMap<Order, OrderDTO>()
                 .ForMember(dest => dest.UsersId,

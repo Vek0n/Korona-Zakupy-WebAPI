@@ -68,8 +68,15 @@ namespace KoronaZakupy.Controllers {
 
         }
 
-
         [AllowAnonymous]
+        [HttpGet("exist/{resource}/{name}")]
+        public async Task<ActionResult<bool>> CheckEmail( string resource,string name)
+        {
+            var result = await _userGetter.IsExist(resource, name, _userManager);
+
+            return Ok(result);
+        }
+
         [HttpPost("register")]
         public async Task<object> Register([FromBody] RegisterModel model) {
 

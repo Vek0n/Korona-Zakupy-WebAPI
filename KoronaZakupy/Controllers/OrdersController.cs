@@ -44,29 +44,6 @@ namespace KoronaZakupy.Controllers {
             this.unitOfWork = unitOfWork;
         }
 
-        // TODO: Tylko do testowania, na koniec usunąć
-        //[AllowAnonymous]
-        //[HttpGet("test")]
-        //public async Task<IActionResult> Test()
-        //{
-
-        //    var test = new PlaceOrderModel()
-        //    {
-        //        Products = new List<string>
-        //        {
-        //            "Jajka",
-        //            "Harnaś",
-        //            "Wojak",
-        //            "4xKustosz"
-        //        },
-        //        UserId = "26c3f897-04e2-4347-84c2-185d8be381cb"
-        //    };
-
-        //    await _createOrder.PlaceOrder(test);
-
-        //    return Ok();
-        //}
-
         [AllowAnonymous]
         [HttpGet("all/{id}")]
         public async Task<IEnumerable<OrderModel>> GetOrders(string id) {

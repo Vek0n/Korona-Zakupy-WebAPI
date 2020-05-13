@@ -11,5 +11,6 @@ namespace KoronaZakupy.Services.Interfaces {
 
         Task<ActionResult<Entities.UserDb.User>> GetUser(string id, UserManager<Entities.UserDb.User> userManager);
         Task<IList<string>> GetRole(string id,UserManager<Entities.UserDb.User> userManager);
+        Task<bool> IsExist(string resource, string name, UserManager<Entities.UserDb.User> userManager);
     }
 }

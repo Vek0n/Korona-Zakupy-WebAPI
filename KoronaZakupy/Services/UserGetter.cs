@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using KoronaZakupy.Services.Interfaces;
 using System.Linq;
 using System;
-using KoronaZakupy.Entities;
+using System.Reflection;
 
 namespace KoronaZakupy.Services {
     public class UsersGetter : IUserGetter{
@@ -35,5 +35,33 @@ namespace KoronaZakupy.Services {
             return (await userManager.GetRolesAsync(user));
         }
 
+        public async Task<bool> IsExist(string resource, string name,UserManager<Entities.UserDb.User> userManager)
+        {
+            if(resource == "email")
+            {
+               var result = await userManager.FindByEmailAsync(name);
+                
+                if(result == null)
+                    return false;
+
+                return true;
+            }
+           
+            if(resource == "name")
+            {
+                var result = await userManager.FindByNameAsync(name);
+                if(result == null)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            else
+            {
+                throw new ApplicationException("This resource is not allowed!");
+            }
+
+        }
     }
 }

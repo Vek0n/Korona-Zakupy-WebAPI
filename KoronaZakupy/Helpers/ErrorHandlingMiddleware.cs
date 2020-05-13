@@ -28,10 +28,10 @@ namespace KoronaZakupy.Helpers
         private static Task HandleExceptionAsync(HttpContext context,Exception ex)
             {
             var httpCode = HttpStatusCode.InternalServerError;
-            var message = "Internal Server Error";
+           //var message = "Internal Server Error";
 
-            if (ex is ApplicationException)
-                message = ex.Message;
+            //if (ex is ApplicationException)
+              var  message = ex.Message;
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)httpCode;
