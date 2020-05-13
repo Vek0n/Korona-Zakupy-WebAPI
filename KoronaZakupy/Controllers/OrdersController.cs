@@ -51,14 +51,12 @@ namespace KoronaZakupy.Controllers {
             return  _mapper.Map<IEnumerable<OrderModel>>( await _orderGetter.GetOrdersAsync(id) );          
         }
 
-
         [AllowAnonymous]
         [HttpGet("active")]
         public async Task<IEnumerable<OrderModel>> GetActiveOrders()
         {
             return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetActiveOrdersAsync() );
         }
-
 
         [AllowAnonymous]
         [HttpGet("active/{id}")]
@@ -67,7 +65,6 @@ namespace KoronaZakupy.Controllers {
             return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetUserActiveOrdersAsync(id));
         }
 
-
         [AllowAnonymous]
         [HttpPost("add")]
         public async Task<object> PlaceOrder( [FromBody] PlaceOrderModel model) {
@@ -75,14 +72,12 @@ namespace KoronaZakupy.Controllers {
             return await _createOrder.PlaceOrder(model);
         }
 
-
         [AllowAnonymous]
         [HttpPost("accept/{id}/{userId}")]
         public async Task Accept(long id, string userId) {
 
              await _updateOrder.AcceptOrder(id, userId);
         }
-
 
         [AllowAnonymous]
         [HttpPost("accept/cancel/{id}/{userId}")]

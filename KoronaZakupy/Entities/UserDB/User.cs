@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KoronaZakupy.Entities.UserDb {
     public class User : IdentityUser {
@@ -13,6 +14,10 @@ namespace KoronaZakupy.Entities.UserDb {
         public decimal Rating { get; set; }
         
         public string  PhotoDirectory { get; set; }
+
+        [NotMapped]
+        public string UserRole { get; set;}
+
 
     }
 }

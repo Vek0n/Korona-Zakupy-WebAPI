@@ -40,11 +40,11 @@ namespace KoronaZakupy.Services
                 foreach (var userId in order.UsersId)
                 {
                     var user = await _userManager.FindByIdAsync(userId);
+                    user.UserRole = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
                     result.UsersInfo.Add(_mapper.Map<UserDTO>(user));
                 }
                 results.Add(result);
             }
-           
             return results;
         }
     }

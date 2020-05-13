@@ -21,6 +21,8 @@ namespace KoronaZakupy.Entities
 
         public string PhotoDirectory { get; set; }
 
+        public string UserRole { get; set;}
+
      
     
     }

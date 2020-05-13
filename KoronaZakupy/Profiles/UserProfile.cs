@@ -13,6 +13,8 @@ namespace KoronaZakupy.Profiles
             CreateMap<Entities.UserDb.User, UserDTO>()
                 .ForMember(dest => dest.UserId,
                 opt => opt.MapFrom(src => src.Id));
+                //.ForMember(dest => dest.UserRole,
+                //opt => opt);
             ;
         }
             
