@@ -48,8 +48,14 @@ namespace KoronaZakupy.Repositories {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             var isOrderConfirmed = (await GetIsOrderConfirmed(orderId, userId));
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
-
-            _ordersDb.Remove(new UserOrder(orderId,userId,isOrderConfirmed));
+            try
+            {
+                _ordersDb.Remove(new UserOrder(orderId, userId, isOrderConfirmed));
+            }
+            catch(Exception ex)
+            {
+                var xd = ex.Message;
+            }
         }
 
         public async Task UpdateAsync<T>(T resource)
@@ -78,7 +84,7 @@ namespace KoronaZakupy.Repositories {
          
         public async Task<Order> FindOrderByOrderIdAsync(long id) {
 
-            return  await _ordersDb.Orders.Include(o=> o.Users).ThenInclude(row => row.User)
+            return  await _ordersDb.Orders.AsNoTracking().Include(o=> o.Users).ThenInclude(row => row.User)
                 .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 

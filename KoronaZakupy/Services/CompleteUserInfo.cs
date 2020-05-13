@@ -33,8 +33,7 @@ namespace KoronaZakupy.Services
                     OrderId = order.OrderId,
                     OrderDate = order.OrderDate,
                     Products = order.Products,
-                    IsActive = order.IsActive,
-                    IsFinished = order.IsFinished,
+                    OrderStatus = order.OrderStatus,
                     UsersInfo = new List<UserDTO>()
                 };
 

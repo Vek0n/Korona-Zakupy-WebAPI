@@ -23,8 +23,9 @@ namespace KoronaZakupy.Profiles
                 .ForMember(dest => dest.UsersId,
                 opt => opt.MapFrom(src => src.Users.Select(uo => uo.UserId).ToList()));
 
-            CreateMap<CompleteOrderDTO, OrderModel>();
-           
+            CreateMap<CompleteOrderDTO, OrderModel>()
+                .ForMember(dest => dest.OrderStatus,
+                opt => opt.MapFrom(src => src.OrderStatus.ToString()));         
         }
     }
 

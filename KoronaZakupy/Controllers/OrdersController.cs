@@ -92,14 +92,14 @@ namespace KoronaZakupy.Controllers {
         }
 
         [AllowAnonymous]
-        [HttpGet("confirm/{id}/{userId}")]
+        [HttpPost("confirm/{id}/{userId}")]
         public async Task ConfirmFinishedOrder(long id, string userId) {
 
            await _updateOrder.ConfirmAndFinishOrder(id, userId);
         }
 
         [AllowAnonymous]
-        [HttpGet("confirm/cancel/{id}/{userId}")]
+        [HttpPost("confirm/cancel/{id}/{userId}")]
         public async Task CancelConfirmation(long id, string userId) {
 
             await _updateOrder.ConfirmAndFinishOrder(id,userId);

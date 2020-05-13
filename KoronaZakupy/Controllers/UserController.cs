@@ -77,6 +77,7 @@ namespace KoronaZakupy.Controllers {
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<object> Register([FromBody] RegisterModel model) {
 

@@ -1,8 +1,7 @@
 ﻿using KoronaZakupy.Entities;
+using KoronaZakupy.Entities.OrdersDB;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KoronaZakupy.Models
 {
@@ -11,8 +10,7 @@ namespace KoronaZakupy.Models
         public long OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public IEnumerable<string> Products { get; set; }
-        public bool IsFinished { get; set; }
-        public bool IsActive { get; set; }
+        public Order.OrderStatusEnum OrderStatus { get; set; }
         public List<UserDTO> UsersInfo { get; set; }
     }
 }

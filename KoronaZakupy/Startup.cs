@@ -17,6 +17,7 @@ using KoronaZakupy.Repositories;
 using KoronaZakupy.UnitOfWork;
 using AutoMapper;
 using KoronaZakupy.Helpers;
+using System.Text.Json.Serialization;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -31,7 +32,11 @@ namespace KoronaZakupy {
 
             services.AddControllers();
 
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .AddJsonOptions(option =>
+                {
+                    option.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
 
             services.AddDbContext<Entities.UserDb.UsersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UsersDatabase")));
             services.AddDbContext<OrdersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OrdersDatabase")));
