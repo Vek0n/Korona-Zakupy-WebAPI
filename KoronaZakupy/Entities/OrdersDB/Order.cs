@@ -7,6 +7,14 @@ namespace KoronaZakupy.Entities.OrdersDB
 {
     public class Order 
     {
+        public enum OrderStatusEnum
+        {
+            Avalible,
+            InProgress,
+            AwaitingConfirmation,
+            Finished
+        }
+
         [Key]
         public long OrderId { get; set; }
 
@@ -15,9 +23,11 @@ namespace KoronaZakupy.Entities.OrdersDB
        
         public IEnumerable<string> Products { get; set; }
 
-        public bool IsFinished { get; set; }
+        public OrderStatusEnum OrderStatus { get; set; }
 
-        public bool IsActive { get; set; }
+       // public bool IsFinished { get; set; }
+
+       //public bool IsActive { get; set; }
 
         public ICollection<UserOrder> Users { get; set; }
     }

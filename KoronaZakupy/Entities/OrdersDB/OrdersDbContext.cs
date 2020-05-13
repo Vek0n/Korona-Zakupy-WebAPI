@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
+using KoronaZakupy.Entities.OrdersDB;
 
 namespace KoronaZakupy.Entities.OrdersDB
 {
@@ -40,9 +41,11 @@ namespace KoronaZakupy.Entities.OrdersDB
                 .Property(order => order.Products)
                 .Metadata.SetValueComparer(comparer);
 
-
-
-
+            builder.Entity<Order>()
+                .Property(order => order.OrderStatus)
+                .HasConversion(
+                status => status.ToString(),
+                status => (Order.OrderStatusEnum)Enum.Parse(typeof(Order.OrderStatusEnum),status));
         }
     }
 }

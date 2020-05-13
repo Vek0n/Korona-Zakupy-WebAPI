@@ -54,15 +54,8 @@ namespace KoronaZakupy.Repositories {
 
         public async Task UpdateAsync<T>(T resource)
         {
-            try
-            {
-                _ordersDb.Entry(resource).State = EntityState.Modified;//????
-                _ordersDb.Update(resource);
-            }
-            catch(Exception ex)
-            {
-                var exMessage = ex.Message;
-            }
+                _ordersDb.Entry(resource).State = EntityState.Modified;
+                _ordersDb.Update(resource); 
         }
 
         public async Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId)
@@ -89,7 +82,6 @@ namespace KoronaZakupy.Repositories {
                 .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 
-
         public async Task<IEnumerable<OrderDTO>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false)
         {
             var rawResult = await FindByUserIdRawAsync(userId, findByActivity);
@@ -99,26 +91,18 @@ namespace KoronaZakupy.Repositories {
 
         private async Task<IEnumerable<Order>> FindByUserIdRawAsync(string userId, bool findByActivity = false)
         {
-            try
-            {
+           
                 if (!findByActivity)
                 {
                     return (_ordersDb.Orders.Include(order => order.Users)
-                   .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))).AsEnumerable();
+                        .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))).AsEnumerable();
                 }
 
                 return (_ordersDb.Orders.Include(order => order.Users)
-               .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
-               .Where(x => x.IsActive == true)).AsEnumerable();
-            }
-            catch(Exception ex)
-            {
-                var exMess = ex.Message;
-                return null;
-            }
-        
+                    .ThenInclude(row => row.User).Where(o => o.Users.Any(uo => uo.UserId == userId))
+                    .Where(x => x.OrderStatus == Order.OrderStatusEnum.Avalible)).AsEnumerable();
         }
-
+        
         public async Task<IEnumerable<OrderDTO>> FindActiveOrdersAsync()
         {
             var rawResult = await FindActiveOrdersRawAsync();
@@ -129,7 +113,7 @@ namespace KoronaZakupy.Repositories {
         private async Task<IEnumerable<Order>> FindActiveOrdersRawAsync()
         {
             return _ordersDb.Orders.Include(order => order.Users)
-                 .ThenInclude(row => row.User).Where(order => order.IsActive == true);
+                 .ThenInclude(row => row.User).Where(order => order.OrderStatus == Order.OrderStatusEnum.Avalible);
         }
 
     }

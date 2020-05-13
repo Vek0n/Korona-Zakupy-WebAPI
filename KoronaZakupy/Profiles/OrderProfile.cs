@@ -5,6 +5,7 @@ using KoronaZakupy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static KoronaZakupy.Entities.OrdersDB.Order;
 
 namespace KoronaZakupy.Profiles
 {
@@ -15,8 +16,8 @@ namespace KoronaZakupy.Profiles
             CreateMap<PlaceOrderModel, Order>()
                 .ForMember(dest => dest.OrderDate,
                 opt => opt.MapFrom(src => DateTime.Now) )
-                .ForMember(dest => dest.IsActive,
-                opt => opt.MapFrom(src => true));
+                .ForMember(dest => dest.OrderStatus,
+                opt => opt.MapFrom(src => OrderStatusEnum.Avalible));
                      
             CreateMap<Order, OrderDTO>()
                 .ForMember(dest => dest.UsersId,

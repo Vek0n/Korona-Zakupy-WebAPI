@@ -70,7 +70,7 @@ namespace KoronaZakupy.Controllers {
 
         [AllowAnonymous]
         [HttpPost("add")]
-        public async Task<object> Add( [FromBody] PlaceOrderModel model) {
+        public async Task<object> PlaceOrder( [FromBody] PlaceOrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
         }
@@ -91,40 +91,18 @@ namespace KoronaZakupy.Controllers {
             await _updateOrder.UnAcceptOrder(id, userId);
         }
 
-
-
-        [AllowAnonymous]
-        [HttpGet("finish/{id}")]
-        public async Task CompleteOrder(long id) {
-
-            await _updateOrder.FinishOrder(id);   
-        }
-
         [AllowAnonymous]
         [HttpGet("confirm/{id}/{userId}")]
         public async Task ConfirmFinishedOrder(long id, string userId) {
 
-           await _updateOrder.ChangeConfirmationOfFinishedOrder(id, userId);
-
+           await _updateOrder.ConfirmAndFinishOrder(id, userId);
         }
-
 
         [AllowAnonymous]
         [HttpGet("confirm/cancel/{id}/{userId}")]
         public async Task CancelConfirmation(long id, string userId) {
 
-            await _updateOrder.ChangeConfirmationOfFinishedOrder(id,userId);
-
+            await _updateOrder.ConfirmAndFinishOrder(id,userId);
         }
-
-        [AllowAnonymous]
-        [HttpGet("confirm/check/{id}")]
-        public async Task<bool> CheckConfirmation(long id) {
-
-            return await _updateOrder.DidBothUsersConfirmedFinishedOrder(id);
-
-        }
-
-
     }
 }

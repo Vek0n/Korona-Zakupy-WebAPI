@@ -18,70 +18,67 @@ namespace KoronaZakupy.Services {
             _userManager = userManager;
         }
        
-        public async Task FinishOrder(long id)
+        public async Task ConfirmAndFinishOrder(long orderId, string userId)
         {
-            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
-            order.IsFinished = true;
-
-            await FinishUpdate(order);
-            
+            await ChangeIsConfirmedInUserOrder(orderId, userId);
+            await ChangeConfirmationOfOrder(orderId, userId);
         }
 
-        public async Task ChangeActiveProperty(long id)
+        private async Task ChangeIsConfirmedInUserOrder(long orderId, string userId)
         {
-            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
-
-            if (order.IsActive)
-                order.IsActive = false;
-            else
-                order.IsActive = true;
-
-            await FinishUpdate(order);
+            var userOrder = await _ordersRepository.ChangeConfirmationOfOrderAsync(orderId, userId);
+            await FinishUpdate(userOrder);
         }
-
-      
-        private async Task FinishUpdate<T>(T resource)
+        
+        private async Task ChangeConfirmationOfOrder(long orderId, string userId)
         {
-            await _ordersRepository.UpdateAsync(resource);
-            await _unitOfWork.CompleteAsync();
-        }
+            var order = await _ordersRepository.FindOrderByOrderIdAsync(orderId);
+            var counter = 0;
 
-
-        public async Task<bool> DidBothUsersConfirmedFinishedOrder(long id)
-        {
-
-            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
-            
-            foreach( var userOrderRelation in order.Users)
+            foreach (var userOrderRelation in order.Users)
             {
-                if (!userOrderRelation.IsOrderConfirmed)
-                    return false;
+                if (userOrderRelation.IsOrderConfirmed)
+                    counter++;
             }
 
-            return true;
+            if (counter == 1)
+                await ChangeOrderStatus(orderId, Order.OrderStatusEnum.AwaitingConfirmation);
+            else if (counter == 2)
+                await ChangeOrderStatus(orderId, Order.OrderStatusEnum.Finished);
+            else
+                throw new ApplicationException();
         }
 
         public async Task AcceptOrder(long id, string userId) {
 
-            await ChangeActiveProperty(id);
+            await ChangeOrderStatus(id,Order.OrderStatusEnum.InProgress);
 
             await _ordersRepository.AddRelationAsync(id, userId);
             await _unitOfWork.CompleteAsync();
         }
 
-
         public async Task UnAcceptOrder(long orderId, string userId) {
+
+            await ChangeOrderStatus(orderId,Order.OrderStatusEnum.Avalible);
 
             await _ordersRepository.DeleteRelationAsync(orderId, userId);
             await _unitOfWork.CompleteAsync();
 
         }
 
-        public async Task ChangeConfirmationOfFinishedOrder(long id, string userId)
+        private async Task ChangeOrderStatus(long id, Order.OrderStatusEnum newStatus)
         {
-            var userOrder = await _ordersRepository.ChangeConfirmationOfOrderAsync(id, userId);
-            await ChangeActiveProperty(id);
-            await FinishUpdate(userOrder);
+            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
+
+            order.OrderStatus = newStatus;
+
+            await FinishUpdate(order);
+        }
+
+        private async Task FinishUpdate<T>(T resource)
+        {
+            await _ordersRepository.UpdateAsync(resource);
+            await _unitOfWork.CompleteAsync();
         }
     }
 }
