@@ -44,8 +44,14 @@ namespace KoronaZakupy.Entities.OrdersDB
             builder.Entity<Order>()
                 .Property(order => order.OrderStatus)
                 .HasConversion(
-                status => status.ToString(),
-                status => (Order.OrderStatusEnum)Enum.Parse(typeof(Order.OrderStatusEnum),status));
+                    status => status.ToString(),
+                    status => (Order.OrderStatusEnum) Enum.Parse(typeof(Order.OrderStatusEnum),status));
+
+            //builder.Entity<Order>()
+            //    .Property(order => order.OrderType)
+            //    .HasConversion(
+            //        orderType => orderType.ToString(),
+            //        orderType => (Order.OrderTypeEnum) Enum.Parse(typeof(Order.OrderTypeEnum), orderType));
         }
     }
 }

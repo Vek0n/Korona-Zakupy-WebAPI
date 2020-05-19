@@ -28,7 +28,6 @@ namespace KoronaZakupy.Services {
             _mapper = mapper;
         }
 
-
         public async Task<RegisterResponseModel>Register(
             RegisterModel validModel,
             UserManager<Entities.UserDb.User> userManager,
@@ -36,20 +35,15 @@ namespace KoronaZakupy.Services {
             IConfiguration configuration) {
 
 
-            var user = _mapper.Map<Entities.UserDb.User>(validModel);
+            var newUser = _mapper.Map<Entities.UserDb.User>(validModel);
 
-            var result = await userManager.CreateAsync(user, validModel.Password);
+            var result = await userManager.CreateAsync(newUser, validModel.Password);
 
             //Sign in and generate token if register is succesful 
             if (result.Succeeded) {
-
-                var userId = (await userManager.FindByEmailAsync(validModel.Email)).Id;
-                User userDB = new User
-                {
-                    UserId = userId
-                };
-                await _ordersRepository.CreateAsync(userDB);
-                await _unitOfWork.CompleteAsync();
+                var user = await userManager.FindByEmailAsync(validModel.Email);
+       
+                AddedToOrderDb(user.Id);
 
                 await userManager.AddToRoleAsync(user, validModel.RoleName);
                 await signInManager.SignInAsync(user, false);
@@ -57,7 +51,7 @@ namespace KoronaZakupy.Services {
                 var token = await _tokenGenerator.GenerateJwtToken(validModel.Email, user, configuration);
 
                 RegisterResponseModel model = new RegisterResponseModel {
-                    UserId = userId,
+                    UserId = user.Id,
                     Token = token
                 };
 
@@ -66,5 +60,14 @@ namespace KoronaZakupy.Services {
             throw new ApplicationException("UNKNOWN_ERROR");
         }
 
+        private async void AddedToOrderDb(string userId)
+        {
+            User userDB = new User
+            {
+                UserId = userId
+            };
+            await _ordersRepository.CreateAsync(userDB);
+            await _unitOfWork.CompleteAsync();
+        }
     }
 }

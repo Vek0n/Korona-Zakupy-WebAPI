@@ -21,11 +21,23 @@ namespace KoronaZakupy.Services {
             SignInManager<Entities.UserDb.User> signInManager,
             IConfiguration configuration) {
 
-            var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var userName = await userManager.FindByEmailAsync(model.Email);
+            var result = await signInManager.PasswordSignInAsync(userName.UserName, model.Password, false, false);
 
             if (result.Succeeded) {
                 var appUser = userManager.Users.SingleOrDefault(r => r.Email == model.Email);
-                return await _tokenGenerator.GenerateJwtToken(model.Email, appUser, configuration);
+                var token = await _tokenGenerator.GenerateJwtToken(model.Email, appUser, configuration);
+                var userId = (await userManager.FindByEmailAsync(model.Email)).Id;
+                var roleName = (await userManager.GetRolesAsync(appUser)).SingleOrDefault();
+                var modelResponse = new LoginResponseModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    RoleName = roleName
+                };
+
+                return modelResponse;
+
             }
 
             throw new ApplicationException("INVALID_LOGIN_ATTEMPT");

@@ -15,17 +15,19 @@ namespace KoronaZakupy.Profiles
         {
             CreateMap<PlaceOrderModel, Order>()
                 .ForMember(dest => dest.OrderDate,
-                opt => opt.MapFrom(src => DateTime.Now) )
+                    opt => opt.MapFrom(src => DateTime.Now) )
                 .ForMember(dest => dest.OrderStatus,
-                opt => opt.MapFrom(src => OrderStatusEnum.Avalible));
+                    opt => opt.MapFrom(src => OrderStatusEnum.Avalible));
                      
             CreateMap<Order, OrderDTO>()
                 .ForMember(dest => dest.UsersId,
-                opt => opt.MapFrom(src => src.Users.Select(uo => uo.UserId).ToList()));
+                    opt => opt.MapFrom(src => src.Users.Select(uo => uo.UserId).ToList()));
 
             CreateMap<CompleteOrderDTO, OrderModel>()
                 .ForMember(dest => dest.OrderStatus,
-                opt => opt.MapFrom(src => src.OrderStatus.ToString()));         
+                    opt => opt.MapFrom(src => src.OrderStatus.ToString()));
+                //.ForMember(dest => dest.OrderType,
+                   // opt => opt.MapFrom(src => src.OrderType.ToString()));
         }
     }
 

@@ -18,6 +18,7 @@ using KoronaZakupy.UnitOfWork;
 using AutoMapper;
 using KoronaZakupy.Helpers;
 using System.Text.Json.Serialization;
+using KoronaZakupy.Profiles;
 
 namespace KoronaZakupy {
     public class Startup {
@@ -73,7 +74,8 @@ namespace KoronaZakupy {
             services.AddScoped<IOrderGetter, OrderGetter>();
             services.AddScoped<IUpdateOrder, UpdateOrder>();
             services.AddScoped<ICompleteUserInfo, CompleteUserInfo>();
-
+            services.AddScoped<IRatingManager, RatingManager>();
+            services.AddScoped<IRatingService, RatingService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddRazorPages();

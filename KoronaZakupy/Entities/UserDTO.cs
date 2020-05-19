@@ -17,9 +17,7 @@ namespace KoronaZakupy.Entities
 
         public string LastName { get; set; }
 
-        public decimal Rating { get; set; }
-
-        public string PhotoDirectory { get; set; }
+        public double Rating { get; set; }
 
         public string UserRole { get; set;}
 

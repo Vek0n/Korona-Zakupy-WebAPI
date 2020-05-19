@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KoronaZakupy.Entities;
 using KoronaZakupy.Models;
+using KoronaZakupy.Services.Interfaces;
 
 namespace KoronaZakupy.Profiles
 {
@@ -12,10 +13,7 @@ namespace KoronaZakupy.Profiles
 
             CreateMap<Entities.UserDb.User, UserDTO>()
                 .ForMember(dest => dest.UserId,
-                opt => opt.MapFrom(src => src.Id));
-                //.ForMember(dest => dest.UserRole,
-                //opt => opt);
-            ;
+                    opt => opt.MapFrom(src => src.Id));     
         }
             
 

@@ -10,13 +10,14 @@ namespace KoronaZakupy.Entities.UserDb {
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-      
-        public decimal Rating { get; set; }
-        
+          
         public string  PhotoDirectory { get; set; }
 
         [NotMapped]
         public string UserRole { get; set;}
+
+        [NotMapped]
+        public double Rating { get; set; }
 
 
     }

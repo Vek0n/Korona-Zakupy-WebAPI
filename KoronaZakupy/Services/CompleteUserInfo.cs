@@ -14,12 +14,14 @@ namespace KoronaZakupy.Services
     {
         private readonly UserManager<Entities.UserDb.User> _userManager;
         private readonly IMapper _mapper;
+        private readonly IRatingService _ratingService;
 
         public CompleteUserInfo(UserManager<Entities.UserDb.User> userManager,
-            IMapper mapper)
+            IMapper mapper,IRatingService ratingService)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _ratingService = ratingService;
         }
 
         public async Task<IEnumerable<CompleteOrderDTO>> CompleteAsync(IEnumerable<OrderDTO> orders)
@@ -41,6 +43,7 @@ namespace KoronaZakupy.Services
                 {
                     var user = await _userManager.FindByIdAsync(userId);
                     user.UserRole = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                    user.Rating = _ratingService.GetUserRating(user.Id).Result;
                     result.UsersInfo.Add(_mapper.Map<UserDTO>(user));
                 }
                 results.Add(result);

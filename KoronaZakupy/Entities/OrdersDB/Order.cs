@@ -15,11 +15,22 @@ namespace KoronaZakupy.Entities.OrdersDB
             Finished
         }
 
+        public enum OrderTypeEnum
+
+        {
+            Grocery,
+            Grocery18Plus,
+            Pharmacy,
+            Dog
+        }
+
         [Key]
         public long OrderId { get; set; }
 
         public DateTime  OrderDate { get; set; }
-  
+           
+       // public OrderTypeEnum OrderType { get; set; }
+
         public IEnumerable<string> Products { get; set; }
 
         public OrderStatusEnum OrderStatus { get; set; }

@@ -27,6 +27,7 @@ namespace KoronaZakupy.Controllers {
         private readonly IUserLogin _userLogin;
         private readonly IUserGetter _userGetter;
         private readonly IMapper _mapper;
+        private readonly IRatingService _ratingService;
 
         public UserController(
             UserManager<Entities.UserDb.User> userManager,
@@ -35,7 +36,8 @@ namespace KoronaZakupy.Controllers {
             IUserRegister userRegister,
             IUserLogin userLogin,
             IUserGetter userGetter,
-            IMapper mapper) {
+            IMapper mapper,
+            IRatingService ratingService) {
 
             _userManager = userManager;
             _signInManager = signInManager;
@@ -44,8 +46,16 @@ namespace KoronaZakupy.Controllers {
             _userLogin = userLogin;
             _userGetter = userGetter;
             _mapper = mapper;
+            _ratingService = ratingService;
         }
 
+
+        [HttpPost("rate/{userId}/{rating}")]
+        public async Task<IActionResult> AddRatingToUser(string userId, double rating)
+        {
+            await _ratingService.AddRatingToUser(userId, rating);
+            return Ok();
+        }
 
         [HttpGet]
         public async Task<IEnumerable<Entities.UserDb.User>> Get() {

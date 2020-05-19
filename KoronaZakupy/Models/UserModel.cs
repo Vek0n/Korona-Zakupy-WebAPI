@@ -8,8 +8,6 @@ namespace KoronaZakupy.Models {
 
         public long Rating { get; set; }
 
-        public string Photo { get; set; }
-
         public string Address { get; set; }
     }
 }

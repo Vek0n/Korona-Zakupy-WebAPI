@@ -4,40 +4,22 @@ using KoronaZakupy.Entities.UserDb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KoronaZakupy.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    partial class UsersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200519122607_releaseUser")]
+    partial class releaseUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("KoronaZakupy.Entities.UserDB.Raiting", b =>
-                {
-                    b.Property<int>("RaitingId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.HasKey("RaitingId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Raitings");
-                });
 
             modelBuilder.Entity("KoronaZakupy.Entities.UserDb.User", b =>
                 {
@@ -145,15 +127,15 @@ namespace KoronaZakupy.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bdd02d19-3110-42d1-b824-3ae79cb970dd",
-                            ConcurrencyStamp = "6b4b59b7-50f8-4405-8be4-697724fc7836",
+                            Id = "7c690132-5a63-4f47-8f61-2755974d8f0a",
+                            ConcurrencyStamp = "6d9a15a8-6f27-4470-ba1b-ebde0a7b743c",
                             Name = "Volunteer",
                             NormalizedName = "VOLUNTEER"
                         },
                         new
                         {
-                            Id = "715f34dc-502e-4f1e-9c35-60abfe948e98",
-                            ConcurrencyStamp = "4bc87622-cce4-4b84-b0f4-f115f498eb6b",
+                            Id = "35a23980-3be4-4f2b-95e5-ec3ea32d55be",
+                            ConcurrencyStamp = "de7464cf-8051-47b0-b665-6aac36f9496d",
                             Name = "PersonInQuarantine",
                             NormalizedName = "PERSONINQUARANTINE"
                         });
@@ -261,13 +243,6 @@ namespace KoronaZakupy.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("KoronaZakupy.Entities.UserDB.Raiting", b =>
-                {
-                    b.HasOne("KoronaZakupy.Entities.UserDb.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
