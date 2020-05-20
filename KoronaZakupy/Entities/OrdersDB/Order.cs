@@ -29,7 +29,7 @@ namespace KoronaZakupy.Entities.OrdersDB
 
         public DateTime  OrderDate { get; set; }
            
-       // public OrderTypeEnum OrderType { get; set; }
+        public OrderTypeEnum OrderType { get; set; }
 
         public IEnumerable<string> Products { get; set; }
 

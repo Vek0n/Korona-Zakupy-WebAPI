@@ -24,76 +24,72 @@ namespace KoronaZakupy.Controllers {
         private readonly ICreateOrder _createOrder;
         private readonly IOrderGetter _orderGetter;
         private readonly IUpdateOrder _updateOrder;
+        private readonly IDeleteOrder _deleteOrder;
         private readonly IMapper _mapper;
-
-        private readonly IOrdersRepository repo;
-        private readonly IUnitOfWork unitOfWork;
 
         public OrdersController(
             ICreateOrder createOrder,
             IOrderGetter orderGetter,
             IUpdateOrder updateOrder,
             IMapper mapper,
-            IOrdersRepository repo,
-            IUnitOfWork unitOfWork) {
+            IDeleteOrder deleteOrder) {
             _createOrder = createOrder;
             _orderGetter = orderGetter;
             _updateOrder = updateOrder;
+            _deleteOrder = deleteOrder;
             _mapper = mapper;
-            this.repo = repo;
-            this.unitOfWork = unitOfWork;
         }
 
-        [AllowAnonymous]
         [HttpGet("all/{id}")]
         public async Task<IEnumerable<OrderModel>> GetOrders(string id) {
 
             return  _mapper.Map<IEnumerable<OrderModel>>( await _orderGetter.GetOrdersAsync(id) );          
         }
 
-        [AllowAnonymous]
         [HttpGet("active")]
         public async Task<IEnumerable<OrderModel>> GetActiveOrders()
         {
             return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetActiveOrdersAsync() );
         }
 
-        [AllowAnonymous]
         [HttpGet("active/{id}")]
         public async Task <IEnumerable<OrderModel>> GetUsersActiveOrders(string id) {
 
             return _mapper.Map<IEnumerable<OrderModel>>(await _orderGetter.GetUserActiveOrdersAsync(id));
         }
 
-        [AllowAnonymous]
         [HttpPost("add")]
         public async Task<object> PlaceOrder( [FromBody] PlaceOrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
         }
 
-        [AllowAnonymous]
+        [HttpDelete("{orderId}")]
+        public async Task<IActionResult> DeleteOrder(long orderId)
+        {
+            await _deleteOrder.Delete(orderId);
+
+            return Ok();
+        }
+
         [HttpPost("accept/{id}/{userId}")]
         public async Task Accept(long id, string userId) {
 
              await _updateOrder.AcceptOrder(id, userId);
         }
 
-        [AllowAnonymous]
         [HttpPost("accept/cancel/{id}/{userId}")]
         public async Task UnAccept(long id, string userId){
 
             await _updateOrder.UnAcceptOrder(id, userId);
         }
 
-        [AllowAnonymous]
         [HttpPost("confirm/{id}/{userId}")]
         public async Task ConfirmFinishedOrder(long id, string userId) {
 
            await _updateOrder.ConfirmAndFinishOrder(id, userId);
         }
 
-        [AllowAnonymous]
         [HttpPost("confirm/cancel/{id}/{userId}")]
         public async Task CancelConfirmation(long id, string userId) {
 

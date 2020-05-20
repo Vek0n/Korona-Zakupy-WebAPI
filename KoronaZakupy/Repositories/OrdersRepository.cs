@@ -64,6 +64,11 @@ namespace KoronaZakupy.Repositories {
                 _ordersDb.Update(resource); 
         }
 
+        public void Delete<T>(T resource)
+        {
+            _ordersDb.Remove(resource);
+        }
+
         public async Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId)
         {
             _ordersDb.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
@@ -82,13 +87,13 @@ namespace KoronaZakupy.Repositories {
         }
 
          
-        public async Task<Order> FindOrderByOrderIdAsync(long id) {
+        public async Task<Order> GetOrderEntityAsync(long id) {
 
             return  await _ordersDb.Orders.AsNoTracking().Include(o=> o.Users).ThenInclude(row => row.User)
                 .Where(order => order.OrderId == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<OrderDTO>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false)
+        public async Task<IEnumerable<OrderDTO>> GetOrdersByUserIdAsync(string userId, bool findByActivity=false)
         {
             var rawResult = await FindByUserIdRawAsync(userId, findByActivity);
 
@@ -109,7 +114,7 @@ namespace KoronaZakupy.Repositories {
                     .Where(x => x.OrderStatus == Order.OrderStatusEnum.Avalible)).AsEnumerable();
         }
         
-        public async Task<IEnumerable<OrderDTO>> FindActiveOrdersAsync()
+        public async Task<IEnumerable<OrderDTO>> GetActiveOrdersAsync()
         {
             var rawResult = await FindActiveOrdersRawAsync();
 

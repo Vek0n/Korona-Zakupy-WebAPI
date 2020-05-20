@@ -32,7 +32,7 @@ namespace KoronaZakupy.Services {
         
         private async Task ChangeConfirmationOfOrder(long orderId, string userId)
         {
-            var order = await _ordersRepository.FindOrderByOrderIdAsync(orderId);
+            var order = await _ordersRepository.GetOrderEntityAsync(orderId);
             var counter = 0;
 
             foreach (var userOrderRelation in order.Users)
@@ -68,7 +68,7 @@ namespace KoronaZakupy.Services {
 
         private async Task ChangeOrderStatus(long id, Order.OrderStatusEnum newStatus)
         {
-            var order = await _ordersRepository.FindOrderByOrderIdAsync(id);
+            var order = await _ordersRepository.GetOrderEntityAsync(id);
 
             order.OrderStatus = newStatus;
 

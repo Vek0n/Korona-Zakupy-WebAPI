@@ -23,18 +23,18 @@ namespace KoronaZakupy.Services {
         public async Task<IEnumerable<CompleteOrderDTO>> GetActiveOrdersAsync()
         {
 
-            return await  _completeUserInfo.CompleteAsync( await _ordersRepository.FindActiveOrdersAsync() );
+            return await  _completeUserInfo.CompleteAsync( await _ordersRepository.GetActiveOrdersAsync() );
         }
 
         public async Task<IEnumerable<CompleteOrderDTO>> GetOrdersAsync(string userId) {
 
-            return await _completeUserInfo.CompleteAsync( await _ordersRepository.FindOrdersByUserIdAsync(userId) );
+            return await _completeUserInfo.CompleteAsync( await _ordersRepository.GetOrdersByUserIdAsync(userId) );
         }
 
 
         public async Task<IEnumerable<CompleteOrderDTO>> GetUserActiveOrdersAsync(string userId) {
 
-            return await _completeUserInfo.CompleteAsync(await _ordersRepository.FindOrdersByUserIdAsync(userId,true));
+            return await _completeUserInfo.CompleteAsync(await _ordersRepository.GetOrdersByUserIdAsync(userId,true));
         }
 
     }

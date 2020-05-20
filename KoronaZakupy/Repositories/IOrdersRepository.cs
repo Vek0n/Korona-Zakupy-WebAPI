@@ -14,11 +14,13 @@ namespace KoronaZakupy.Repositories
 
         Task UpdateAsync<T>(T resource);
 
-        Task<Order> FindOrderByOrderIdAsync(long id);
+        void Delete<T>(T resource);
 
-        Task<IEnumerable<OrderDTO>> FindOrdersByUserIdAsync(string userId, bool findByActivity=false);
+        Task<Order> GetOrderEntityAsync(long id);
 
-        Task<IEnumerable<OrderDTO>> FindActiveOrdersAsync();
+        Task<IEnumerable<OrderDTO>> GetOrdersByUserIdAsync(string userId, bool findByActivity=false);
+
+        Task<IEnumerable<OrderDTO>> GetActiveOrdersAsync();
 
         Task<UserOrder> ChangeConfirmationOfOrderAsync(long orderId, string userId);
     }
