@@ -62,7 +62,7 @@ namespace KoronaZakupy.Controllers {
         public async Task<object> PlaceOrder( [FromBody] PlaceOrderModel model) {
 
             return await _createOrder.PlaceOrder(model);
-        }
+       }
 
         [HttpDelete("{orderId}")]
         public async Task<IActionResult> DeleteOrder(long orderId)

@@ -73,6 +73,7 @@ namespace KoronaZakupy {
             services.AddScoped<ICreateOrder, CreateOrder>();
             services.AddScoped<IOrderGetter, OrderGetter>();
             services.AddScoped<IUpdateOrder, UpdateOrder>();
+            services.AddScoped<IDeleteOrder, DeleteOrder>();
             services.AddScoped<ICompleteUserInfo, CompleteUserInfo>();
             services.AddScoped<IRatingManager, RatingManager>();
             services.AddScoped<IRatingService, RatingService>();

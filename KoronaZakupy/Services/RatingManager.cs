@@ -40,9 +40,9 @@ namespace KoronaZakupy.Services
         {
             var user = await _userManager.FindByIdAsync(userId);
             var result = 0.0d;
-            if (await _usersDb.Raitings.FirstOrDefaultAsync(rating => rating.User == user) != null)
+            if (await _usersDb.Raitings.AsNoTracking().FirstOrDefaultAsync(rating => rating.User == user) != null)
             {
-               result = _usersDb.Raitings.Where(rating => rating.User == user).Select(rating => rating.Value).Average();
+               result = _usersDb.Raitings.AsNoTracking().Where(rating => rating.User == user).Select(rating => rating.Value).Average();
             }
 
             return result;

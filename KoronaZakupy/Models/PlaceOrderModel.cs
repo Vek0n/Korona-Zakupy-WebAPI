@@ -7,6 +7,10 @@ namespace KoronaZakupy.Models {
 
         [Required]
         public string UserId { get; set; }
+        
+        [Required]
+        public string OrderType { get; set; }
+
         [Required]
         public List<string> Products { get; set; }
 

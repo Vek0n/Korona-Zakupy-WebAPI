@@ -36,6 +36,7 @@ namespace KoronaZakupy.Services
                     OrderDate = order.OrderDate,
                     Products = order.Products,
                     OrderStatus = order.OrderStatus,
+                    OrderType = order.OrderType,
                     UsersInfo = new List<UserDTO>()
                 };
 

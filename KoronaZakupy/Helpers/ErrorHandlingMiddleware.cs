@@ -32,11 +32,12 @@ namespace KoronaZakupy.Helpers
 
             //if (ex is ApplicationException)
               var  message = ex.Message;
+            var innerMessage = ex.InnerException.Message;  
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)httpCode;
 
-            return context.Response.WriteAsync(new ErrorDetails((int)httpCode, message).ToString());
+            return context.Response.WriteAsync(new ErrorDetails((int)httpCode, message + " " + innerMessage).ToString());
         }
         
     }
