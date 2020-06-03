@@ -66,6 +66,7 @@ namespace KoronaZakupy.Repositories {
 
         public void Delete<T>(T resource)
         {
+            _ordersDb.Entry(resource).State = EntityState.Deleted;
             _ordersDb.Remove(resource);
         }
 

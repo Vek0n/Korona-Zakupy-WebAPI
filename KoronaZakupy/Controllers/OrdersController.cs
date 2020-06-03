@@ -64,6 +64,7 @@ namespace KoronaZakupy.Controllers {
             return await _createOrder.PlaceOrder(model);
        }
 
+        [AllowAnonymous]
         [HttpDelete("{orderId}")]
         public async Task<IActionResult> DeleteOrder(long orderId)
         {
